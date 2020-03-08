@@ -4,17 +4,19 @@ from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush
 from PyQt5.QtCore import pyqtSlot, QSize
 from sqlitedict import *
 
-class Window2(QMainWindow):                          
+class Window2(QMainWindow):                         
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Window22222")
-        self.x=200 
-        self.y=200 
-        self.width=600
-        self.height=350
-        self.setGeometry(self.x,self.y,self.width,self.height)
-        self.textboxlbl = QLabel("<h1>PHYSICS<h1>",self)
-        self.textboxlbl.move(245, 130)
+        self.setWindowTitle("PHYSICS(calculus-based)")
+        self.setWindowIcon(QIcon('young-lion_97429.ico')) 
+
+        self.setGeometry(200,200,600,350)
+        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
+        self.textboxlbl.move(245, 10)
+        self.textboxlb2 = QLabel("<h2>Topics</h2>",self)
+        self.textboxlb2.move(265, 35)
+
+
 class App(QWidget):
 
     def __init__(self):
@@ -38,23 +40,25 @@ class App(QWidget):
         palette.setBrush(10, QBrush(sImage))                        
         self.setPalette(palette)
         
-        self.textboxlbl = QLabel("     PHYSICS\n"
-        "Calculus-Based",self)
-        self.textboxlbl.move(255, 130)
+        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
+        self.textboxlbl.move(245, 130)
+        self.textboxlb2= QLabel("<h2>Calculus-Based</h2>",self)
+        self.textboxlb2.move(225, 160)
 
         self.button = QPushButton('EXPLORE', self)
         self.button.setToolTip("Explore the wonderinfo")
-        self.button.move(255,190) # button.move(x,y)
+        self.button.move(255,190) 
        
-        self.button.clicked.connect(self.prof)
+        self.button.clicked.connect(self.Window2)
     
         self.show()
-        
-    def Window2(self):                                           
+
+    def Window2(self):                                             # <===
         self.w = Window2()
-        
         self.w.show()
         self.hide()
+
+        
 
     @pyqtSlot()
     def prof(self):
@@ -121,12 +125,3 @@ if __name__ == "__main__":
     Main = App()
     sys.exit(app.exec_())
     
-
-
-
-
-
-
-
-
-
