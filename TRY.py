@@ -4,6 +4,17 @@ from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush
 from PyQt5.QtCore import pyqtSlot, QSize
 from sqlitedict import *
 
+class Window2(QMainWindow):                          
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Window22222")
+        self.x=200 
+        self.y=200 
+        self.width=600
+        self.height=350
+        self.setGeometry(self.x,self.y,self.width,self.height)
+        self.textboxlbl = QLabel("<h1>PHYSICS<h1>",self)
+        self.textboxlbl.move(245, 130)
 class App(QWidget):
 
     def __init__(self):
@@ -38,6 +49,12 @@ class App(QWidget):
         self.button.clicked.connect(self.prof)
     
         self.show()
+        
+    def Window2(self):                                           
+        self.w = Window2()
+        
+        self.w.show()
+        self.hide()
 
     @pyqtSlot()
     def prof(self):
