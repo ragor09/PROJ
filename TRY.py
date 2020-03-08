@@ -9,7 +9,7 @@ class App(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         
-        self.title = "Antipuesto"
+        self.title = "PHYSICS"
         self.x=200 
         self.y=200 
         self.width=600
