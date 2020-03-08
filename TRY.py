@@ -9,7 +9,7 @@ class App(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         
-        self.title = "Project"
+        self.title = "Antipuesto"
         self.x=200 
         self.y=200 
         self.width=600
@@ -27,56 +27,16 @@ class App(QWidget):
         palette.setBrush(10, QBrush(sImage))                        
         self.setPalette(palette)
         
-        self.textboxlbl = QLabel("ACCOUNT REGISTRATTION SYSTEM",self)
-        self.textboxlbl.move(215,20)
-        self.textboxlb2 = QLabel("First Name:",self)
-        self.textboxlb2.move(120,60)
-        self.textboxlb3 = QLabel("Last Name:",self)
-        self.textboxlb3.move(120,100)
-        self.textboxlb4 = QLabel("Username:",self)
-        self.textboxlb4.move(122,140)
-        self.textboxlb5 = QLabel("Password:",self)
-        self.textboxlb5.move(122,180)
-        self.textboxlb6 = QLabel("E-mail:",self)
-        self.textboxlb6.move(141,220)
-        self.textboxlb7 = QLabel("Contact No.:",self)
-        self.textboxlb7.move(112,260)
+        self.textboxlbl = QLabel("     PHYSICS\n"
+        "Calculus-Based",self)
+        self.textboxlbl.move(255, 130)
 
-        self.textbox = QLineEdit(self)
-        self.textbox.move(175, 50)
-        self.textbox.resize(280,30)
-        self.textbox.setToolTip("Enter your First Name")
-        self.textbox2 = QLineEdit(self)
-        self.textbox2.move(175, 90)
-        self.textbox2.resize(280,30)
-        self.textbox2.setToolTip("Enter your Last Name")
-        self.textbox3 = QLineEdit(self)
-        self.textbox3.move(175, 130)
-        self.textbox3.resize(280,30)
-        self.textbox3.setToolTip("Enter Username")
-        self.textbox4 = QLineEdit(self)
-        self.textbox4.move(175, 170)
-        self.textbox4.resize(280,30)
-        self.textbox4.setToolTip("Enter Password")
-        self.textbox5 = QLineEdit(self)
-        self.textbox5.move(175, 210)
-        self.textbox5.resize(280,30)
-        self.textbox5.setToolTip("Enter your email")
-        self.textbox6 = QLineEdit(self)
-        self.textbox6.move(175, 250)
-        self.textbox6.resize(280,30)
-        self.textbox6.setToolTip("Enter your Contact Number")
-
-        self.button = QPushButton('Submit', self)
-        self.button.setToolTip("Submit your info")
-        self.button.move(175,290) # button.move(x,y)
-        self.button2 = QPushButton('Clear',self)
-        self.button2.setToolTip("Clears everything")
-        self.button2.move(380,290) # button.move(x,y)
+        self.button = QPushButton('EXPLORE', self)
+        self.button.setToolTip("Explore the wonderinfo")
+        self.button.move(255,190) # button.move(x,y)
+       
         self.button.clicked.connect(self.prof)
-        self.button2.clicked.connect(self.on_click)
-        
-        
+    
         self.show()
 
     @pyqtSlot()
