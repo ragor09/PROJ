@@ -1,7 +1,7 @@
 import sys
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QLineEdit, QLabel, QMessageBox
-from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
+from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont
 from PyQt5.QtCore import pyqtSlot, QSize
 
 class Window3(QMainWindow):
@@ -21,54 +21,6 @@ class Window3(QMainWindow):
         self.buttonback.setStyleSheet("background-color:lightblue")
         self.buttonback.move(150,250)
         self.buttonback.clicked.connect(self.Window2)
-    
-        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
-        self.textboxlbl.move(245, 10)
-        self.textboxlb3 = QLabel("Enter Mass:",self)
-        self.textboxlb3.move(120,70)
-        self.textboxlb4 = QLabel("Weight:",self)
-        self.textboxlb4.move(130,130)
-
-        self.textbox6 = QLineEdit(self)
-        self.textbox6.setValidator(QDoubleValidator(self))
-        self.textbox6.move(190, 70)
-        self.textbox6.resize(200,30)
-        self.textbox6.setToolTip("Enter Mass")
-        
-        self.textbox7 = QLineEdit(self)
-        self.textbox7.setReadOnly(True)
-        self.textbox7.move(190, 130)
-        self.textbox7.resize(200,30)
-        self.textbox7.setToolTip("")
-        
-        self.button = QPushButton('Submit', self)
-        self.button.setToolTip("Submit your info")
-        self.button.move(195,190) # button.move(x,y)
-        self.button.clicked.connect(self.prof) 
-
-    @pyqtSlot()
-    def prof(self):
-        num = float(self.textbox6.text())
-        
-        self.Submit(num)
-    
-    def Submit(self,num):
-        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
-            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
-    
-        if button == QMessageBox.Yes and num != "":
-            grav= 9.8
-            weight = num*grav
-            self.textbox7.setText(f"{weight}")
-        
-        
-        elif button == QMessageBox.No:
-            pass
-        
-        elif button == QMessageBox.Yes and num == "":
-            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
-        else:
-           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
         
     def Window2(self):
         self.w = Window2()
@@ -136,25 +88,26 @@ class Window2(QMainWindow):
         self.setPalette(palette)
         self.setStyleSheet
         self.setGeometry(200,200,600,350)
-        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
-        self.textboxlbl.move(255, 30)
-        self.textboxlbl.setFont(QtGui.QFont('Lucida Handwriting', 7))
+
         self.textboxlb2 = QLabel("<h2>Topics</h2>",self)
-        self.textboxlb2.move(265, 55)
-        self.textboxlb2.setFont(QtGui.QFont('Castellar', 7))
-        self.button2 = QPushButton("CALCULATE", self)
-        self.button2.setToolTip("Calculate the formula")
-        self.button2.setStyleSheet("background-color:pink")
+        self.textboxlb2.move(255, 35)
+        self.textboxlb2.setFont(QtGui.QFont('Castellar', 12.5))
+        self.button2 = QPushButton("N E W T O N ' S  F I R S T  L A W", self)
+        self.button2.setToolTip("View the formula")
+        self.button2.setFont(QtGui.QFont('Goudy Old Style', 8))
+        self.button2.setStyleSheet("background-color:violet")
         self.button2.move(150,90)
         self.button2.resize(300,30)
-        self.button3 = QPushButton("CALCULATE 2", self)
-        self.button3.setToolTip("Calculate the formula")
-        self.button3.setStyleSheet("background-color:pink")
+        self.button3 = QPushButton("N E W T O N ' S  S E C O N D  L A W", self)
+        self.button3.setFont(QtGui.QFont('Goudy Old Style', 8))
+        self.button3.setToolTip("View the formula")
+        self.button3.setStyleSheet("background-color:violet")
         self.button3.move(150,150)
         self.button3.resize(300,30)
-        self.button4 = QPushButton("CALCULATE 3", self)
-        self.button4.setToolTip("Calculate the formula")
-        self.button4.setStyleSheet("background-color:pink")
+        self.button4 = QPushButton("N E W T O N ' S  T H I R D   L A W", self)
+        self.button4.setFont(QtGui.QFont('Goudy Old Style', 8))
+        self.button4.setToolTip("view the formula")
+        self.button4.setStyleSheet("background-color:violet")
         self.button4.move(150,210)
         self.button4.resize(300,30)
         
@@ -205,17 +158,19 @@ class App(QWidget):
         palette.setBrush(10, QBrush(sImage))                        
         self.setPalette(palette)
         
-        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
-        self.textboxlbl.move(200, 70)
+        self.textboxlbl = QLabel("<h1>P H Y S I C S</h1>",self)
+        self.textboxlbl.move(160, 70)
         self.textboxlbl.setFont(QtGui.QFont('Lucida Fax',18))
-        self.textboxlb2= QLabel("<h2>Calculus-Based</h2>",self)
-        self.textboxlb2.move(215, 130)
+        self.textboxlb2= QLabel("<h2>c a l c u l u s - b a s e d</h2>",self)
+        self.textboxlb2.move(180, 130)
         self.textboxlb2.setFont(QtGui.QFont('Monotype Corsiva', 13))
 
-        self.button = QPushButton('EXPLORE', self)
-        self.button.setToolTip("Explore the wonderinfo")
-        self.button.move(255,170)
+        self.button = QPushButton('E X P L O R E  T O P I C S', self)
+        self.button.setFont(QtGui.QFont('Goudy Old Style',13))
+        self.button.setToolTip("Explore topics")
+        self.button.move(190,190)
         self.button.setStyleSheet("background-color:lightblue")
+        self.button.resize(220,50)
        
         self.button.clicked.connect(self.Window2)
     
