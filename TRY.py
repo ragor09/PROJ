@@ -1,7 +1,7 @@
 import sys
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QLineEdit, QLabel, QMessageBox
-from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont
+from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
 from PyQt5.QtCore import pyqtSlot, QSize
 
 class Window3(QMainWindow):
@@ -21,6 +21,54 @@ class Window3(QMainWindow):
         self.buttonback.setStyleSheet("background-color:lightblue")
         self.buttonback.move(150,250)
         self.buttonback.clicked.connect(self.Window2)
+    
+        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
+        self.textboxlbl.move(245, 10)
+        self.textboxlb3 = QLabel("Enter Mass:",self)
+        self.textboxlb3.move(120,70)
+        self.textboxlb4 = QLabel("Weight:",self)
+        self.textboxlb4.move(130,130)
+
+        self.textbox6 = QLineEdit(self)
+        self.textbox6.setValidator(QDoubleValidator(self))
+        self.textbox6.move(190, 70)
+        self.textbox6.resize(200,30)
+        self.textbox6.setToolTip("Enter Mass")
+        
+        self.textbox7 = QLineEdit(self)
+        self.textbox7.setReadOnly(True)
+        self.textbox7.move(190, 130)
+        self.textbox7.resize(200,30)
+        self.textbox7.setToolTip("")
+        
+        self.button = QPushButton('Submit', self)
+        self.button.setToolTip("Submit your info")
+        self.button.move(195,190) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        num = float(self.textbox6.text())
+        
+        self.Submit(num)
+    
+    def Submit(self,num):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and num != "":
+            grav= 9.8
+            weight = num*grav
+            self.textbox7.setText(f"{weight}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
         
     def Window2(self):
         self.w = Window2()
