@@ -1,21 +1,115 @@
 import sys
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow, QPushButton, QLineEdit, QLabel, QMessageBox
+from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
 from PyQt5.QtCore import pyqtSlot, QSize
 
+class App(QWidget):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.title = "Antipuesto"
+        self.x=200 
+        self.y=200 
+        self.width=300
+        self.height=200
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.x,self.y,self.width,self.height)
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("explore.jpg")
+        sImage = oImage.scaled(QSize(200,200))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.createGridLayout()
+        self.setLayout(self.layout) 
+        self.show()
+
+    def createGridLayout(self):
+        self.layout = QGridLayout()
+        self.layout.setColumnStretch(0, 1)
+        self.layout.setColumnStretch(3, 1)
+        self.layout.setRowStretch(0, 0)
+        self.layout.setRowStretch(3, 0)
+
+        self.textboxlbl = QLabel("Username: ",self)
+        self.textboxlbl.setFont(QtGui.QFont('Lucida Fax',15))
+        self.textbox = QLineEdit(self)
+        self.textbox.setStyleSheet("""QLineEdit {  border: 1.5px solid gray;
+                                                    border-radius: 4px;
+                                                    padding: 0 3px;
+                                                    background: lightblue;
+                                                    selection-background-color: darkgray;
+                                                }""")
+        self.textboxlbl2 = QLabel("Password: ",self)
+        self.textboxlbl2.setFont(QtGui.QFont('Lucida Fax',15))
+        self.password = QLineEdit(self)
+        self.password.setEchoMode(QLineEdit.Password)
+        self.password.setStyleSheet("""QLineEdit {  border: 1.5px solid gray;
+                                                    border-radius: 4px;
+                                                    padding: 0 3px;
+                                                    background: lightblue;
+                                                    selection-background-color: darkgray;
+                                                }""")
+        self.button = QPushButton('Login',self)
+        self.button.setStyleSheet("""QPushButton{  border: 2px solid gray;
+                                                    border-radius: 10px;
+                                                    padding: 0 8px;
+                                                    background: rgb(203, 177, 242);
+                                                    selection-background-color: darkgray;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                 QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+        self.button.setToolTip("Click to Login!")
+        self.button.clicked.connect(self.Window2)
+        self.register = QPushButton('Register',self)
+        self.register.setStyleSheet("""QPushButton{  border: 2px solid gray;
+                                                    border-radius: 10px;
+                                                    padding: 0 8px;
+                                                    background: rgb(203, 177, 242);
+                                                    selection-background-color: darkgray;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                 QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+        self.register.setToolTip("Click to Login!")
+        self.register.clicked.connect(self.registerWin)
+        self.layout.addWidget(self.register,3,1)
+        self.layout.addWidget(self.textboxlbl,1,1)
+        self.layout.addWidget(self.textbox,1,2)
+        self.layout.addWidget(self.textboxlbl2,2,1)
+        self.layout.addWidget(self.password,2,2)
+        self.layout.addWidget(self.button,3,2)
+        
+    def registerWin(self):
+        self.w = registerWin()
+        self.w.show()
+        self.hide()
+
+    def Window2(self):                                             
+        self.w = Window2()
+        self.w.show()
+        self.hide()
+
+class registerWin(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
 class Window3(QMainWindow):
     def __init__(self):
         super().__init__()
-        oImage = QImage("calculate.jpg")
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        sImage = oImage.scaled(QSize(550,350))   
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
         palette = QPalette()
-        palette.setBrush(10, QBrush(sImage))                        
+        palette.setBrush(10, QBrush(sImage)) 
         self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
         self.setGeometry(200,200,600,350)
         self.setWindowTitle("1")
-        self.textboxlbl = QLabel("1",self)
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
         self.buttonback.setStyleSheet("background-color:lightblue")
@@ -23,6 +117,8 @@ class Window3(QMainWindow):
         self.buttonback.clicked.connect(self.Window2)
     
         self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
+        self.textboxlbl.setStyleSheet("""QLabel{ background: blue;}""")
+        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
         self.textboxlbl.move(245, 10)
         self.textboxlb3 = QLabel("Enter Mass:",self)
         self.textboxlb3.move(120,70)
@@ -40,22 +136,24 @@ class Window3(QMainWindow):
         self.textbox6.setValidator(QDoubleValidator(self))
         self.textbox6.move(190, 70)
         self.textbox6.resize(200,30)
+        self.textbox6.setText("0")
         self.textbox6.setToolTip("Enter Mass")
         
         self.textbox7 = QLineEdit(self)
         self.textbox7.setReadOnly(True)
-        self.textbox7.setStyleSheet("""QLineEdit {
-    border: 2px solid gray;
-    border-radius: 10px;
-    padding: 0 8px;
-    background: yellow;
-    selection-background-color: darkgray;
-}""")
+        self.textbox7.setStyleSheet("""QLineEdit {  border: 2px solid gray;
+                                                    border-radius: 10px;
+                                                    padding: 0 8px;
+                                                    background: yellow;
+                                                    selection-background-color: darkgray;
+                                                }""")
         self.textbox7.move(190, 130)
         self.textbox7.resize(200,30)
         self.textbox7.setToolTip("")
         
         self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton:hover{background-color: yellow}
+                                     QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
         self.button.setToolTip("Submit your info")
         self.button.move(195,190) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
@@ -149,7 +247,11 @@ class Window2(QMainWindow):
         palette = QPalette()
         palette.setBrush(10, QBrush(sImage))                        
         self.setPalette(palette)
-        self.setStyleSheet
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,600,350)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("first.jpg"))
+        self.label.setScaledContents(True)
         self.setGeometry(200,200,600,350)
         self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
         self.textboxlbl.move(255, 30)
@@ -194,58 +296,8 @@ class Window2(QMainWindow):
         self.w.show()
         self.hide()
     
-    
-    
-
-class App(QWidget):
-
-    def __init__(self):
-        QWidget.__init__(self)
-        
-        self.title = "PHYSICS"
-        self.x=200 
-        self.y=200 
-        self.width=600
-        self.height=350
-        
-        self.initUI()
-
-    def initUI(self):
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.x,self.y,self.width,self.height)
-        self.setWindowIcon(QIcon('young-lion_97429.ico')) 
-        oImage = QImage("explore.jpg")
-        sImage = oImage.scaled(QSize(550,350))   
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage))                        
-        self.setPalette(palette)
-        
-        self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
-        self.textboxlbl.move(200, 70)
-        self.textboxlbl.setFont(QtGui.QFont('Lucida Fax',18))
-        self.textboxlb2= QLabel("<h2>Calculus-Based</h2>",self)
-        self.textboxlb2.move(215, 130)
-        self.textboxlb2.setFont(QtGui.QFont('Monotype Corsiva', 13))
-
-        self.button = QPushButton('EXPLORE', self)
-        self.button.setToolTip("Explore the wonderinfo")
-        self.button.move(255,170)
-        self.button.setStyleSheet("background-color:lightblue")
-       
-        self.button.clicked.connect(self.Window2)
-    
-        self.show()
-
-    def Window2(self):                                             
-        self.w = Window2()
-        self.w.show()
-        self.hide()
-
-        
-
-        
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
-    Main = App()
+    ex = App()
     sys.exit(app.exec_())
