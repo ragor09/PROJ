@@ -3,6 +3,7 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
 from PyQt5.QtCore import pyqtSlot, QSize
+from sqlitedict import *
 
 class App(QWidget):
     def __init__(self):
@@ -34,43 +35,58 @@ class App(QWidget):
         self.layout.setRowStretch(0, 0)
         self.layout.setRowStretch(3, 0)
 
+        self.label = QLabel(self)
+        self.label.setGeometry(32,20,250,100)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+
         self.textboxlbl = QLabel("Username: ",self)
         self.textboxlbl.setFont(QtGui.QFont('Lucida Fax',15))
         self.textbox = QLineEdit(self)
-        self.textbox.setStyleSheet("""QLineEdit {  border: 1.5px solid gray;
-                                                    border-radius: 4px;
-                                                    padding: 0 3px;
-                                                    background: lightblue;
-                                                    selection-background-color: darkgray;
+        self.textbox.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox.setStyleSheet("""QLineEdit {border: 1.5px solid gray;
+                                                border-radius: 4px;
+                                                padding: 0 3px;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
                                                 }""")
         self.textboxlbl2 = QLabel("Password: ",self)
         self.textboxlbl2.setFont(QtGui.QFont('Lucida Fax',15))
         self.password = QLineEdit(self)
+        self.password.setFont(QtGui.QFont('Lucida Fax',11))
         self.password.setEchoMode(QLineEdit.Password)
-        self.password.setStyleSheet("""QLineEdit {  border: 1.5px solid gray;
-                                                    border-radius: 4px;
-                                                    padding: 0 3px;
-                                                    background: lightblue;
-                                                    selection-background-color: darkgray;
+        self.password.setStyleSheet("""QLineEdit{border: 1.5px solid gray;
+                                                border-radius: 4px;
+                                                padding: 0 3px;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
                                                 }""")
         self.button = QPushButton('Login',self)
-        self.button.setStyleSheet("""QPushButton{  border: 2px solid gray;
-                                                    border-radius: 10px;
-                                                    padding: 0 8px;
-                                                    background: rgb(203, 177, 242);
-                                                    selection-background-color: darkgray;
-                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
-                                                 QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+        self.button.setFont(QtGui.QFont('Lucida Fax',11))
+        self.button.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
         self.button.setToolTip("Click to Login!")
         self.button.clicked.connect(self.Window2)
         self.register = QPushButton('Register',self)
-        self.register.setStyleSheet("""QPushButton{  border: 2px solid gray;
-                                                    border-radius: 10px;
-                                                    padding: 0 8px;
-                                                    background: rgb(203, 177, 242);
-                                                    selection-background-color: darkgray;
+        self.register.setFont(QtGui.QFont('Lucida Fax',11))
+        self.register.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                border-width: 2px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                padding: 6px;
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
-                                                 QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
         self.register.setToolTip("Click to Login!")
         self.register.clicked.connect(self.registerWin)
         self.layout.addWidget(self.register,3,1)
@@ -90,10 +106,180 @@ class App(QWidget):
         self.w.show()
         self.hide()
 
-class registerWin(QMainWindow):
+class registerWin(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        self.title = "Registration"
+        self.x=200
+        self.y=200
+        self.width=300
+        self.height=200
+        oImage = QImage("explore.jpg")
+        sImage = oImage.scaled(QSize(200,200))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(20,45,270,150)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle(self.title)
+        
+        grid = QGridLayout()
+        self.setLayout(grid)
+        grid.setColumnStretch(0, 1)
+        grid.setColumnStretch(3, 1)
+        grid.setRowStretch(0, 0)
+        grid.setRowStretch(3, 0)
+
+        self.textboxlbl = QLabel("First Name:", self)
+        self.textboxlbl.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox1 = QLineEdit(self)
+        self.textbox1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox1.setToolTip("Enter your First Name here")
+        self.textbox1.setStyleSheet("""QLineEdit {border: 1.5px solid gray;
+                                                border-radius: 4px;
+                                                padding: 0 3px;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                }""")
+       
+        self.textboxlbl2 = QLabel("Last Name:", self)
+        self.textboxlbl2.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox2 = QLineEdit(self)
+        self.textbox2.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox2.setToolTip("Enter your Last Name here")
+        self.textbox2.setStyleSheet("""QLineEdit {border: 1.5px solid gray;
+                                                border-radius: 4px;
+                                                padding: 0 3px;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                }""")
+    
+        self.textboxlbl3 = QLabel("Username:", self)
+        self.textboxlbl3.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox3 = QLineEdit(self)
+        self.textbox3.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox3.setToolTip("Enter Username here")
+        self.textbox3.setStyleSheet("""QLineEdit {border: 1.5px solid gray;
+                                                border-radius: 4px;
+                                                padding: 0 3px;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                }""")
+   
+        self.textboxlbl4 = QLabel("Password:", self)
+        self.textboxlbl4.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox4 = QLineEdit(self)
+        self.textbox4.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textbox4.setToolTip("Enter Password here")
+        self.textbox4.setEchoMode(QLineEdit.Password)
+        self.textbox4.setStyleSheet("""QLineEdit {border: 1.5px solid gray;
+                                                border-radius: 4px;
+                                                padding: 0 3px;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                }""")
+  
+        self.button = QPushButton('Submit', self)
+        self.button.setFont(QtGui.QFont('Lucida Fax',11))
+        self.button.setToolTip("Submit your information")
+        self.button.setStyleSheet("""QPushButton  {border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.clicked.connect(self.data) 
+
+        self.button2 = QPushButton('Clear',self)
+        self.button2.setFont(QtGui.QFont('Lucida Fax',11))
+        self.button2.setToolTip("Clear all")
+        self.button2.setStyleSheet("""QPushButton  {border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 5em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button2.clicked.connect(self.clear)
+
+        self.back = QPushButton('Back',self)
+        self.back.setFont(QtGui.QFont('Lucida Fax',11))
+        self.back.setToolTip("Go Back")
+        self.back.setStyleSheet("""QPushButton  {border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: red;
+                                                selection-background-color: darkgray;
+                                                min-width: 5em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.back.clicked.connect(self.Window2)
+
+        grid.addWidget(self.back,0,1)
+        grid.addWidget(self.textboxlbl,1,1)
+        grid.addWidget(self.textboxlbl2,2,1)
+        grid.addWidget(self.textboxlbl3,3,1)
+        grid.addWidget(self.textboxlbl4,4,1)
+        grid.addWidget(self.button2,5,1)
+        grid.addWidget(self.textbox1,1,2)
+        grid.addWidget(self.textbox2,2,2)
+        grid.addWidget(self.textbox3,3,2)
+        grid.addWidget(self.textbox4,4,2)
+        grid.addWidget(self.button,5,2)
+        self.setGeometry(self.x,self.y,self.width,self.height)
+    @pyqtSlot()
+    def clear(self):
+        self.textbox1.setText("")
+        self.textbox2.setText("")
+        self.textbox3.setText("")
+        self.textbox4.setText("")
+
+    def data(self):
+        fname = self.textbox1.text()
+        lastname = self.textbox2.text()
+        username = self.textbox3.text()
+        password = self.textbox4.text()
+        self.submitdata(fname, lastname, username, password)
+        
+    def submitdata(self, fname, lastname, username, password):
+        submitting = QMessageBox.question(self, "Submitting Data", "Confirm?", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        
+        if submitting == QMessageBox.Yes and fname != "" and lastname != "" and username != "" and password != "":
+            dataDB = SqliteDict("Ddd.db", autocommit=True)
+            reglist = dataDB.get('reg',[])
+            listdict = {"fname":fname,"lastname":lastname,"username":username, "password":password}
+            reglist.append(listdict)
+            dataDB['reg'] = reglist
+            print(dataDB['reg'])
+
+            QMessageBox.information(self, "Evaluation", "Registration Complete", QMessageBox.Ok, QMessageBox.Ok)
+        
+        elif submitting == QMessageBox.No:
+            pass
+        elif submitting == QMessageBox.No and fname == "" and lastname == "" and username == "" and password == "":
+            pass
+        elif submitting == QMessageBox.No and fname == "" or lastname == "" or username == "" or password == "":
+            QMessageBox.warning(self, "Error","Please complete the blanked field", QMessageBox.Ok, QMessageBox.Ok)
+    def Window2(self):
+        self.w = App()
+        self.w.show()
+        self.hide()
+
 class Window3(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -126,13 +312,11 @@ class Window3(QMainWindow):
         self.textboxlb4.move(130,130)
 
         self.textbox6 = QLineEdit(self)
-        self.textbox6.setStyleSheet("""QLineEdit {
-    border: 2px solid gray;
-    border-radius: 10px;
-    padding: 0 8px;
-    background: yellow;
-    selection-background-color: darkgray;
-}""")
+        self.textbox6.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
         self.textbox6.setValidator(QDoubleValidator(self))
         self.textbox6.move(190, 70)
         self.textbox6.resize(200,30)
@@ -141,12 +325,11 @@ class Window3(QMainWindow):
         
         self.textbox7 = QLineEdit(self)
         self.textbox7.setReadOnly(True)
-        self.textbox7.setStyleSheet("""QLineEdit {  border: 2px solid gray;
-                                                    border-radius: 10px;
-                                                    padding: 0 8px;
-                                                    background: yellow;
-                                                    selection-background-color: darkgray;
-                                                }""")
+        self.textbox7.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
         self.textbox7.move(190, 130)
         self.textbox7.resize(200,30)
         self.textbox7.setToolTip("")
@@ -261,17 +444,41 @@ class Window2(QMainWindow):
         self.textboxlb2.setFont(QtGui.QFont('Castellar', 7))
         self.button2 = QPushButton("CALCULATE", self)
         self.button2.setToolTip("Calculate the formula")
-        self.button2.setStyleSheet("background-color:pink")
+        self.button2.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: pink;
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
         self.button2.move(150,90)
         self.button2.resize(300,30)
         self.button3 = QPushButton("CALCULATE 2", self)
         self.button3.setToolTip("Calculate the formula")
-        self.button3.setStyleSheet("background-color:pink")
+        self.button3.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: pink;
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
         self.button3.move(150,150)
         self.button3.resize(300,30)
         self.button4 = QPushButton("CALCULATE 3", self)
         self.button4.setToolTip("Calculate the formula")
-        self.button4.setStyleSheet("background-color:pink")
+        self.button4.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: pink;
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
         self.button4.move(150,210)
         self.button4.resize(300,30)
         
