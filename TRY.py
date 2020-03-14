@@ -279,344 +279,7 @@ class registerWin(QWidget):
         self.w = App()
         self.w.show()
         self.hide()
-
-class Window3(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        oImage = QImage("calculate.jpg")
-        sImage = oImage.scaled(QSize(800,800))   
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage)) 
-        self.setPalette(palette)
-        self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
-        self.label.setGraphicsEffect(QGraphicsBlurEffect())
-        self.label.setPixmap(QPixmap("calculate.jpg"))
-        self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
         
-        self.buttonback = QPushButton("Back",self)
-        self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
-        self.buttonback.clicked.connect(self.Window2)
-        
-        self.button1 = QPushButton("Formula",self)
-        self.button1.setToolTip("View the formula")
-        self.button1.setStyleSheet("background-color:lightpink")
-        self.button1.move(150,315)
-        self.button1.clicked.connect(self.Formula1)
-        
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
-        self.textboxlbl.move(250, 10)
-        
-        self.desc1 = QLabel("<h3>“An object at rest will remain at rest, and an object in </h3>",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
-        
-        self.desc2 = QLabel("<h3>motion will remain in motion, at constant velocity </h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>and in a straight line, unless acted upon by a net force.”</h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>“In the absence of external forces and when viewed </h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3>from an inertial reference frame, an object at rest  </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>remains at rest and an object in motion continues in  </h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
-        
-        self.desc7 = QLabel("<h3>motion with a constant velocity (that is, with a constant  </h3>",self)
-        self.desc7.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc7.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc7.move(100, 240)
-        self.desc7.resize(440,30)
-        
-        self.desc7 = QLabel("<h3>speed in a straight line).” </h3>",self)
-        self.desc7.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc7.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc7.move(100, 270)
-        self.desc7.resize(440,30)
-    
-    
-
-    def Window2(self):
-        self.w = Window2()
-        self.w.show()
-        self.hide()
-    
-    def Fomula1(self):
-        self.w = Formula1()
-        self.w.show()
-        self.hide()
-
-
-class Window4(QMainWindow):
-    
-    def __init__(self):
-        super().__init__()
-        self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        oImage = QImage("calculate.jpg")
-        sImage = oImage.scaled(QSize(800,800))   
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage)) 
-        self.setPalette(palette)
-        self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
-        self.label.setGraphicsEffect(QGraphicsBlurEffect())
-        self.label.setPixmap(QPixmap("calculate.jpg"))
-        self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
-        
-        self.buttonback = QPushButton("Back",self)
-        self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
-        self.buttonback.clicked.connect(self.Window2)
-        
-        self.button1 = QPushButton("Formula",self)
-        self.button1.setToolTip("View the formula")
-        self.button1.setStyleSheet("background-color:lightpink")
-        self.button1.move(150,315)
-        self.button1.clicked.connect(self.Formula2)
-        
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
-        self.textboxlbl.move(250, 10)
-        
-        self.desc1 = QLabel("<h3>“Newton’s second law answers the question of </h3> ",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
-        
-        self.desc2 = QLabel("<h3>forces acting on it.”  </h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>“When viewed from an inertial reference frame, </h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>the acceleration of an object is directly proportional</h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3>to the net force acting on it and inversely  </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>proportional to its mass.” </h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
-    
-    def Window2(self):
-        self.w = Window2()
-        self.w.show()
-        self.hide()
-        
-    def Fomula2(self):
-        self.w = Formula1()
-        self.w.show()
-        self.hide()
-    
-class Window5(QMainWindow):
-    
-    def __init__(self):
-        super().__init__()
-        self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        oImage = QImage("calculate.jpg")
-        sImage = oImage.scaled(QSize(800,800))   
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage)) 
-        self.setPalette(palette)
-        self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
-        self.label.setGraphicsEffect(QGraphicsBlurEffect())
-        self.label.setPixmap(QPixmap("calculate.jpg"))
-        self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
-        
-        self.buttonback = QPushButton("Back",self)
-        self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
-        self.buttonback.clicked.connect(self.Window2)
-        
-        self.button1 = QPushButton("Formula",self)
-        self.button1.setToolTip("View the formula")
-        self.button1.setStyleSheet("background-color:lightpink")
-        self.button1.move(150,315)
-        self.button1.clicked.connect(self.Formula3)
-        
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
-        self.textboxlbl.move(250, 10)
-        
-        self.desc1 = QLabel("<h3>“If two objects interact, the force exerted by object 1 </h3>",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
-        
-        self.desc2 = QLabel("<h3>on object 2 is equal in magnitude and opposite  </h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>in direction to the force exerted by object 2 on object 1.”</h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>“The force that object 1 exerts on object 2 is popularly  </h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3> called the action force, and the force of object 2 on </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>object 1 is called the reaction force. “</h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
-
-    def Window2(self):
-        self.w = Window2()
-        self.w.show()
-        self.hide()
-    
-    def Fomula3(self):
-        self.w = Formula1()
-        self.w.show()
-        self.hide()
-    
-class Window6(QMainWindow):
-    
-    def __init__(self):
-        super().__init__()
-        self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        oImage = QImage("calculate.jpg")
-        sImage = oImage.scaled(QSize(800,800))   
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage)) 
-        self.setPalette(palette)
-        self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
-        self.label.setGraphicsEffect(QGraphicsBlurEffect())
-        self.label.setPixmap(QPixmap("calculate.jpg"))
-        self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
-        
-        self.buttonback = QPushButton("Back",self)
-        self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
-        self.buttonback.clicked.connect(self.Window2)
-        
-        self.button1 = QPushButton("Formula",self)
-        self.button1.setToolTip("View the formula")
-        self.button1.setStyleSheet("background-color:lightpink")
-        self.button1.move(150,315)
-        self.button1.clicked.connect(self.Formula4)
-        
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
-        self.textboxlbl.move(250, 10)
-        
-        self.desc1 = QLabel("<h3>“Torque is the tendency of a force to rotate an object </h3>",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
-        
-        self.desc2 = QLabel("<h3>about an axis, fulcrum, or pivot. Just as a force is a</h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>push or a pull, a torque can be thought of as a twist.”</h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>“It is a measure of the turning force on an object such </h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3>as a bolt or a flywheel. It is an influence which tends  </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>to change the rotational motion of an object.“</h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
-
-    def Window2(self):
-        self.w = Window2()
-        self.w.show()
-        self.hide()
-    
-    def Fomula4(self):
-        self.w = Formula1()
-        self.w.show()
-        self.hide()
         
 class Window2(QMainWindow):                         
     def __init__(self):
@@ -721,9 +384,348 @@ class Window2(QMainWindow):
     def Window6(self):                                          
         self.w = Window5()
         self.w.show()
+        self.hide()      
+        
+
+class Window3(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightpink")
+        self.buttonback.move(350,315)
+        self.buttonback.clicked.connect(self.Window2)
+        
+        self.button1 = QPushButton("Formula",self)
+        self.button1.setToolTip("View the formula")
+        self.button1.setStyleSheet("background-color:lightpink")
+        self.button1.move(150,315)
+        self.button1.clicked.connect(self.Formula1)
+        
+        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
+        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
+        self.textboxlbl.move(250, 10)
+        
+        self.desc1 = QLabel("<h3>“An object at rest will remain at rest, and an object in </h3>",self)
+        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc1.move(100, 60)
+        self.desc1.resize(440,30)
+        
+        self.desc2 = QLabel("<h3>motion will remain in motion, at constant velocity </h3>",self)
+        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc2.move(100, 90)
+        self.desc2.resize(440,30)
+        
+        self.desc3 = QLabel("<h3>and in a straight line, unless acted upon by a net force.”</h3>",self)
+        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc3.move(100, 120)
+        self.desc3.resize(440,30)
+        
+        self.desc4 = QLabel("<h3>“In the absence of external forces and when viewed </h3>",self)
+        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc4.move(100, 150)
+        self.desc4.resize(440,30)
+        
+        self.desc5 = QLabel("<h3>from an inertial reference frame, an object at rest  </h3>",self)
+        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc5.move(100, 180)
+        self.desc5.resize(440,30)
+        
+        self.desc6 = QLabel("<h3>remains at rest and an object in motion continues in  </h3>",self)
+        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc6.move(100, 210)
+        self.desc6.resize(440,30)
+        
+        self.desc7 = QLabel("<h3>motion with a constant velocity (that is, with a constant  </h3>",self)
+        self.desc7.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc7.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc7.move(100, 240)
+        self.desc7.resize(440,30)
+        
+        self.desc7 = QLabel("<h3>speed in a straight line).” </h3>",self)
+        self.desc7.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc7.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc7.move(100, 270)
+        self.desc7.resize(440,30)
+    
+    
+
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
+        self.hide()
+    
+    def Formula1(self):
+        self.w = Formula1()
+        self.w.show()
+        self.hide()
+
+
+class Window4(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightpink")
+        self.buttonback.move(350,315)
+        self.buttonback.clicked.connect(self.Window2)
+        
+        self.button1 = QPushButton("Formula",self)
+        self.button1.setToolTip("View the formula")
+        self.button1.setStyleSheet("background-color:lightpink")
+        self.button1.move(150,315)
+        self.button1.clicked.connect(self.Formula2)
+        
+        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
+        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
+        self.textboxlbl.move(250, 10)
+        
+        self.desc1 = QLabel("<h3>“Newton’s second law answers the question of </h3> ",self)
+        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc1.move(100, 60)
+        self.desc1.resize(440,30)
+        
+        self.desc2 = QLabel("<h3>forces acting on it.”  </h3>",self)
+        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc2.move(100, 90)
+        self.desc2.resize(440,30)
+        
+        self.desc3 = QLabel("<h3>“When viewed from an inertial reference frame, </h3>",self)
+        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc3.move(100, 120)
+        self.desc3.resize(440,30)
+        
+        self.desc4 = QLabel("<h3>the acceleration of an object is directly proportional</h3>",self)
+        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc4.move(100, 150)
+        self.desc4.resize(440,30)
+        
+        self.desc5 = QLabel("<h3>to the net force acting on it and inversely  </h3>",self)
+        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc5.move(100, 180)
+        self.desc5.resize(440,30)
+        
+        self.desc6 = QLabel("<h3>proportional to its mass.” </h3>",self)
+        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc6.move(100, 210)
+        self.desc6.resize(440,30)
+    
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
         self.hide()
         
-class Window3(QMainWindow):
+    def Formula2(self):
+        self.w = Formula2()
+        self.w.show()
+        self.hide()
+    
+class Window5(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightpink")
+        self.buttonback.move(350,315)
+        self.buttonback.clicked.connect(self.Window2)
+        
+        self.button1 = QPushButton("Formula",self)
+        self.button1.setToolTip("View the formula")
+        self.button1.setStyleSheet("background-color:lightpink")
+        self.button1.move(150,315)
+        self.button1.clicked.connect(self.Formula3)
+        
+        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
+        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
+        self.textboxlbl.move(250, 10)
+        
+        self.desc1 = QLabel("<h3>“If two objects interact, the force exerted by object 1 </h3>",self)
+        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc1.move(100, 60)
+        self.desc1.resize(440,30)
+        
+        self.desc2 = QLabel("<h3>on object 2 is equal in magnitude and opposite  </h3>",self)
+        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc2.move(100, 90)
+        self.desc2.resize(440,30)
+        
+        self.desc3 = QLabel("<h3>in direction to the force exerted by object 2 on object 1.”</h3>",self)
+        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc3.move(100, 120)
+        self.desc3.resize(440,30)
+        
+        self.desc4 = QLabel("<h3>“The force that object 1 exerts on object 2 is popularly  </h3>",self)
+        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc4.move(100, 150)
+        self.desc4.resize(440,30)
+        
+        self.desc5 = QLabel("<h3> called the action force, and the force of object 2 on </h3>",self)
+        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc5.move(100, 180)
+        self.desc5.resize(440,30)
+        
+        self.desc6 = QLabel("<h3>object 1 is called the reaction force. “</h3>",self)
+        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc6.move(100, 210)
+        self.desc6.resize(440,30)
+
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
+        self.hide()
+    
+    def Formula3(self):
+        self.w = Formula3()
+        self.w.show()
+        self.hide()
+    
+class Window6(QMainWindow):
+    
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightpink")
+        self.buttonback.move(350,315)
+        self.buttonback.clicked.connect(self.Window2)
+        
+        self.button1 = QPushButton("Formula",self)
+        self.button1.setToolTip("View the formula")
+        self.button1.setStyleSheet("background-color:lightpink")
+        self.button1.move(150,315)
+        self.button1.clicked.connect(self.Formula4)
+        
+        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
+        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
+        self.textboxlbl.move(250, 10)
+        
+        self.desc1 = QLabel("<h3>“Torque is the tendency of a force to rotate an object </h3>",self)
+        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc1.move(100, 60)
+        self.desc1.resize(440,30)
+        
+        self.desc2 = QLabel("<h3>about an axis, fulcrum, or pivot. Just as a force is a</h3>",self)
+        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc2.move(100, 90)
+        self.desc2.resize(440,30)
+        
+        self.desc3 = QLabel("<h3>push or a pull, a torque can be thought of as a twist.”</h3>",self)
+        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc3.move(100, 120)
+        self.desc3.resize(440,30)
+        
+        self.desc4 = QLabel("<h3>“It is a measure of the turning force on an object such </h3>",self)
+        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc4.move(100, 150)
+        self.desc4.resize(440,30)
+        
+        self.desc5 = QLabel("<h3>as a bolt or a flywheel. It is an influence which tends  </h3>",self)
+        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc5.move(100, 180)
+        self.desc5.resize(440,30)
+        
+        self.desc6 = QLabel("<h3>to change the rotational motion of an object.“</h3>",self)
+        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
+        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
+        self.desc6.move(100, 210)
+        self.desc6.resize(440,30)
+
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
+        self.hide()
+    
+    def Formula4(self):
+        self.w = Formula4()
+        self.w.show()
+        self.hide()
+       
+class Formula1(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
@@ -750,6 +752,88 @@ class Window3(QMainWindow):
         self.w.show()
         self.hide()
     
+class Formula2(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightblue")
+        self.buttonback.move(350,300)
+        self.buttonback.clicked.connect(self.Window2)
+        
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
+        self.hide()
+        
+class Formula3(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightblue")
+        self.buttonback.move(350,300)
+        self.buttonback.clicked.connect(self.Window2)
+        
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
+        self.hide()        
+        
+        
+class Formula4(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightblue")
+        self.buttonback.move(350,300)
+        self.buttonback.clicked.connect(self.Window2)
+        
+    def Window2(self):
+        self.w = Window2()
+        self.w.show()
+        self.hide()
+        
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
