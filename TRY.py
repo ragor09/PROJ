@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Mar 14 15:02:37 2020
-
-@author: 1
-"""
-
 import sys
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
@@ -15,7 +8,7 @@ from sqlitedict import *
 class App(QWidget):
     def __init__(self):
         QWidget.__init__(self)
-        self.title = "PHYSICS"
+        self.title = "Antipuesto"
         self.x=200 
         self.y=200 
         self.width=300
@@ -314,7 +307,7 @@ class Window3(QMainWindow):
         self.button1.setToolTip("View the formula")
         self.button1.setStyleSheet("background-color:lightpink")
         self.button1.move(150,315)
-        self.button1.clicked.connect(self.Window2)
+        self.button1.clicked.connect(self.Formula1)
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
@@ -375,6 +368,11 @@ class Window3(QMainWindow):
         self.w = Window2()
         self.w.show()
         self.hide()
+    
+    def Fomula1(self):
+        self.w = Formula1()
+        self.w.show()
+        self.hide()
 
 
 class Window4(QMainWindow):
@@ -405,7 +403,7 @@ class Window4(QMainWindow):
         self.button1.setToolTip("View the formula")
         self.button1.setStyleSheet("background-color:lightpink")
         self.button1.move(150,315)
-        self.button1.clicked.connect(self.Window2)
+        self.button1.clicked.connect(self.Formula2)
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
@@ -452,6 +450,11 @@ class Window4(QMainWindow):
         self.w = Window2()
         self.w.show()
         self.hide()
+        
+    def Fomula2(self):
+        self.w = Formula1()
+        self.w.show()
+        self.hide()
     
 class Window5(QMainWindow):
     
@@ -481,7 +484,7 @@ class Window5(QMainWindow):
         self.button1.setToolTip("View the formula")
         self.button1.setStyleSheet("background-color:lightpink")
         self.button1.move(150,315)
-        self.button1.clicked.connect(self.Window2)
+        self.button1.clicked.connect(self.Formula3)
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
@@ -529,6 +532,11 @@ class Window5(QMainWindow):
         self.w.show()
         self.hide()
     
+    def Fomula3(self):
+        self.w = Formula1()
+        self.w.show()
+        self.hide()
+    
 class Window6(QMainWindow):
     
     def __init__(self):
@@ -557,7 +565,7 @@ class Window6(QMainWindow):
         self.button1.setToolTip("View the formula")
         self.button1.setStyleSheet("background-color:lightpink")
         self.button1.move(150,315)
-        self.button1.clicked.connect(self.Window2)
+        self.button1.clicked.connect(self.Formula4)
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
@@ -605,6 +613,11 @@ class Window6(QMainWindow):
         self.w.show()
         self.hide()
     
+    def Fomula4(self):
+        self.w = Formula1()
+        self.w.show()
+        self.hide()
+        
 class Window2(QMainWindow):                         
     def __init__(self):
         super().__init__()
@@ -707,6 +720,33 @@ class Window2(QMainWindow):
         
     def Window6(self):                                          
         self.w = Window5()
+        self.w.show()
+        self.hide()
+        
+class Window3(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(200,200,600,350)
+        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.setStyleSheet("background-color:lightblue")
+        self.buttonback.move(350,300)
+        self.buttonback.clicked.connect(self.Window2)
+        
+    def Window2(self):
+        self.w = Window2()
         self.w.show()
         self.hide()
     
