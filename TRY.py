@@ -1,4 +1,5 @@
 import sys
+import sqlite3
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
@@ -9,8 +10,8 @@ class App(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         self.title = "PHYSICS"
-        self.x=200 
-        self.y=200 
+        self.x=540 
+        self.y=300
         self.width=300
         self.height=200
         self.initUI()
@@ -36,7 +37,7 @@ class App(QWidget):
         self.layout.setRowStretch(3, 0)
 
         self.label = QLabel(self)
-        self.label.setGeometry(32,20,250,100)
+        self.label.setGeometry(10,20,285,100)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
@@ -74,7 +75,7 @@ class App(QWidget):
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
         self.button.setToolTip("Click to Login!")
-        self.button.clicked.connect(self.Window2)
+        self.button.clicked.connect(self.data)
         self.register = QPushButton('Register',self)
         self.register.setFont(QtGui.QFont('Lucida Fax',11))
         self.register.setStyleSheet("""QPushButton{border: 2px solid gray;
@@ -95,6 +96,36 @@ class App(QWidget):
         self.layout.addWidget(self.textboxlbl2,2,1)
         self.layout.addWidget(self.password,2,2)
         self.layout.addWidget(self.button,3,2)
+
+    @pyqtSlot()
+    def data(self):
+        username = self.textbox.text()
+        password = self.password.text()
+        self.submitdata(username, password)
+    
+    def submitdata(self,username, password):
+        submitting = QMessageBox.question(self, "Submitting Data", "Confirm?", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+        
+        if submitting == QMessageBox.Yes and username != "" and password != "":
+            conn = sqlite3.connect('names.db')
+            c = conn.cursor()
+            def get_emps_by_name(username,password):
+                c.execute("SELECT * FROM students WHERE username=:user AND password = :passw", {'user': username, 'passw':password})
+                return c.fetchall()
+            self.emp_1 = StudentLog(username, password)
+            emps = get_emps_by_name(username,password)
+            if emps == []:
+                QMessageBox.warning(self, "Error","Input not found", QMessageBox.Ok, QMessageBox.Ok)
+            else:
+                QMessageBox.information(self, "Congratulations","Login successful", QMessageBox.Ok)
+                self.Window2()
+     
+        elif submitting == QMessageBox.No:
+            pass
+        elif submitting == QMessageBox.No and username == "" and password == "":
+            pass
+        elif submitting == QMessageBox.Yes or username == "" or password == "":
+            QMessageBox.warning(self, "Error","Please complete the blanked field", QMessageBox.Ok, QMessageBox.Ok)
         
     def registerWin(self):
         self.w = registerWin()
@@ -106,13 +137,25 @@ class App(QWidget):
         self.w.show()
         self.hide()
 
+class Student:
+    def __init__(self, first, last, user, passw):
+        self.first = first
+        self.last = last
+        self.user = user
+        self.passw = passw
+        
+class StudentLog:
+    def __init__(self,user, passw):
+        self.user = user
+        self.passw = passw
+
 class registerWin(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
         self.title = "Registration"
-        self.x=200
-        self.y=200
+        self.x=540
+        self.y=300
         self.width=300
         self.height=200
         oImage = QImage("explore.jpg")
@@ -218,11 +261,12 @@ class registerWin(QWidget):
         self.back = QPushButton('Back',self)
         self.back.setFont(QtGui.QFont('Lucida Fax',11))
         self.back.setToolTip("Go Back")
-        self.back.setStyleSheet("""QPushButton  {border: 2px solid gray;
+        self.back.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
                                                 border-radius: 10px;
                                                 padding: 6px;
                                                 border-style: outset;
-                                                background: red;
+                                                background: rgb(203, 177, 242);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
@@ -260,12 +304,18 @@ class registerWin(QWidget):
         submitting = QMessageBox.question(self, "Submitting Data", "Confirm?", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
         
         if submitting == QMessageBox.Yes and fname != "" and lastname != "" and username != "" and password != "":
-            dataDB = SqliteDict("Ddd.db", autocommit=True)
-            reglist = dataDB.get('reg',[])
-            listdict = {"fname":fname,"lastname":lastname,"username":username, "password":password}
-            reglist.append(listdict)
-            dataDB['reg'] = reglist
-            print(dataDB['reg'])
+            conn = sqlite3.connect('names.db')
+            c = conn.cursor()
+            def get_emps_by_name(lastname,username):
+                c.execute("SELECT * FROM students WHERE last=:last AND username = :user", {'last': lastname, 'user': username})
+                return c.fetchall()
+            def insert_emp(emp):
+                with conn:
+                    c.execute("INSERT INTO students VALUES (:first, :last, :user, :passw)", {'first': emp.first, 'last': emp.last, 'user': emp.user, 'passw':emp.passw})
+            self.emp_1 = Student(fname, lastname, username, password)
+            insert_emp(self.emp_1)
+            emps = get_emps_by_name(lastname,username)
+            print(emps)
 
             QMessageBox.information(self, "Evaluation", "Registration Complete", QMessageBox.Ok, QMessageBox.Ok)
         
@@ -275,6 +325,7 @@ class registerWin(QWidget):
             pass
         elif submitting == QMessageBox.No and fname == "" or lastname == "" or username == "" or password == "":
             QMessageBox.warning(self, "Error","Please complete the blanked field", QMessageBox.Ok, QMessageBox.Ok)
+
     def Window2(self):
         self.w = App()
         self.w.show()
@@ -297,7 +348,7 @@ class Window2(QMainWindow):
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("first.jpg"))
         self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
+        self.setGeometry(400,220,600,350)
         self.textboxlbl = QLabel("<h1>PHYSICS</h1>",self)
         self.textboxlbl.move(255, 30)
         self.textboxlbl.setFont(QtGui.QFont('Lucida Handwriting', 7))
@@ -382,7 +433,7 @@ class Window2(QMainWindow):
         self.hide()
         
     def Window6(self):                                          
-        self.w = Window5()
+        self.w = Window6()
         self.w.show()
         self.hide()      
         
@@ -401,13 +452,24 @@ class Window3(QMainWindow):
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
+        self.setGeometry(400,220,600,350)
         self.setWindowTitle("NEWTON'S FIRST LAW")
         
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         
         self.button1 = QPushButton("Formula",self)
@@ -497,13 +559,24 @@ class Window4(QMainWindow):
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
+        self.setGeometry(400,220,600,350)
         self.setWindowTitle("NEWTON'S FIRST LAW")
         
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         
         self.button1 = QPushButton("Formula",self)
@@ -583,8 +656,19 @@ class Window5(QMainWindow):
         
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         
         self.button1 = QPushButton("Formula",self)
@@ -664,8 +748,19 @@ class Window6(QMainWindow):
         
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightpink")
-        self.buttonback.move(350,315)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         
         self.button1 = QPushButton("Formula",self)
@@ -735,17 +830,97 @@ class Formula1(QMainWindow):
         palette.setBrush(10, QBrush(sImage)) 
         self.setPalette(palette)
         self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
+        self.label.setGeometry(95,265,450,100)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
+        self.setGeometry(400,190,600,420)
         self.setWindowTitle("NEWTON'S FIRST LAW")
+
+        self.image1 = QLabel(self)
+        pic = QPixmap("image.png")
+        self.image1.setPixmap(pic)
+        self.image1.move(180,0)
+        self.image1.resize(300,300)
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightblue")
-        self.buttonback.move(350,300)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
+        self.textboxlb3 = QLabel("Enter Mass:",self)
+        self.textboxlb3.move(130,270)
+        self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textboxlb4 = QLabel("Weight:",self)
+        self.textboxlb4.move(150,300)
+        self.textboxlb4.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textbox6 = QLineEdit(self)
+        self.textbox6.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox6.setValidator(QDoubleValidator(self))
+        self.textbox6.move(220, 270)
+        self.textbox6.resize(200,30)
+        self.textbox6.setText("0")
+        self.textbox6.setToolTip("Enter Mass")
+        self.textbox6.setFont(QtGui.QFont('Lucida Fax',11))
+        
+        self.textbox7 = QLineEdit(self)
+        self.textbox7.setReadOnly(True)
+        self.textbox7.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox7.move(220, 300)
+        self.textbox7.resize(200,30)
+        self.textbox7.setToolTip("Weight")
+        self.textbox7.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton:hover{background-color: yellow}
+                                     QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+        self.button.setToolTip("Submit your info")
+        self.button.move(230,340) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        num = float(self.textbox6.text())
+        
+        self.Submit(num)
+    
+    def Submit(self,num):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and num != "":
+            grav= 9.8
+            weight = num*grav
+            weight2 = float("{0:.2f}".format(weight))
+            self.textbox7.setText(f"{weight2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
         
     def Window2(self):
         self.w = Window2()
@@ -766,13 +941,149 @@ class Formula2(QMainWindow):
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
-        self.setGeometry(200,200,600,350)
+
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(65,0,250,250)
+        pic = QPixmap("image1.png")
+        self.image1.setPixmap(pic)
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+
+        self.setGeometry(400,190,600,440)
         self.setWindowTitle("NEWTON'S FIRST LAW")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightblue")
-        self.buttonback.move(350,300)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
+        self.textboxlb3 = QLabel("Enter Mass:",self)
+        self.textboxlb3.move(130,270)
+        self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',11))
+        self.textboxlb4 = QLabel("Acceleration(X):",self)
+        self.textboxlb4.move(120,300)
+        self.textboxlb4.setFont(QtGui.QFont('Lucida Fax',10))
+        self.textboxlb5 = QLabel("Acceleration(Y):",self)
+        self.textboxlb5.move(120,330)
+        self.textboxlb5.setFont(QtGui.QFont('Lucida Fax',10))
+        self.textboxlb6 = QLabel("Fnet:",self)
+        self.textboxlb6.move(135,360)
+        self.textboxlb6.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textbox6 = QLineEdit(self)
+        self.textbox6.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox6.setValidator(QDoubleValidator(self))
+        self.textbox6.move(220, 270)
+        self.textbox6.resize(200,30)
+        self.textbox6.setText("0")
+        self.textbox6.setToolTip("Enter Mass")
+        self.textbox6.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.ax = QLineEdit(self)
+        self.ax.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.ax.setValidator(QDoubleValidator(self))
+        self.ax.move(220, 300)
+        self.ax.resize(200,30)
+        self.ax.setText("0")
+        self.ax.setToolTip("Enter acceleration for x")
+        self.ax.setFont(QtGui.QFont('Lucida Fax',11))
+        
+        self.ay = QLineEdit(self)
+        self.ay.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.ay.setValidator(QDoubleValidator(self))
+        self.ay.move(220, 330)
+        self.ay.resize(200,30)
+        self.ay.setText("0")
+        self.ay.setToolTip("Enter acceleration for y")
+        self.ay.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textbox7 = QLineEdit(self)
+        self.textbox7.setReadOnly(True)
+        self.textbox7.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox7.move(220, 360)
+        self.textbox7.resize(150,30)
+        self.textbox7.setToolTip("Fx and Fy")
+        self.textbox7.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textbox8 = QLineEdit(self)
+        self.textbox8.setReadOnly(True)
+        self.textbox8.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox8.move(220, 390)
+        self.textbox8.resize(150,30)
+        self.textbox8.setToolTip("F Magnitude")
+        self.textbox8.setFont(QtGui.QFont('Lucida Fax',11))
+
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton:hover{background-color: yellow}
+                                     QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+        self.button.setToolTip("Submit your info")
+        self.button.move(230,420) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        mass = float(self.textbox6.text())
+        acx = float(self.ax.text())
+        acy = float(self.ay.text())
+        
+        self.Submit(mass,acx,acy)
+    
+    def Submit(self,mass,acx,acy):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and mass != "" and acx != "" and acy != "":
+            fnetx = mass*acx
+            fnetx2 = float("{0:.2f}".format(fnetx))
+            fnety = mass*acy
+            fnety2 = float("{0:.2f}".format(fnety))
+            fnet = ((fnetx2)**2+(fnety2)**2)**0.5
+            fnet2 = float("{0:.2f}".format(fnet))
+            self.textbox7.setText(f"x({fnetx2})  y({fnety2})")
+            self.textbox8.setText(f"{fnet2}")
+
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and mass != "" and acx != "" and acy != "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
         
     def Window2(self):
         self.w = Window2()
@@ -797,8 +1108,19 @@ class Formula3(QMainWindow):
         self.setWindowTitle("NEWTON'S FIRST LAW")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightblue")
-        self.buttonback.move(350,300)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         
     def Window2(self):
@@ -825,8 +1147,19 @@ class Formula4(QMainWindow):
         self.setWindowTitle("NEWTON'S FIRST LAW")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.setStyleSheet("background-color:lightblue")
-        self.buttonback.move(350,300)
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         
     def Window2(self):
