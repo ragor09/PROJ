@@ -1,5 +1,6 @@
 import sys
 import sqlite3
+import numpy as np
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
@@ -937,16 +938,24 @@ class Formula2(QMainWindow):
         palette.setBrush(10, QBrush(sImage)) 
         self.setPalette(palette)
         self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
+        self.label.setGeometry(50,245,520,180)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
 
         self.image1 = QLabel(self)
-        self.image1.setGeometry(65,0,250,250)
+        self.image1.setGeometry(55,5,250,250)
         pic = QPixmap("image1.png")
         self.image1.setPixmap(pic)
         self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+
+        self.image2 = QLabel(self)
+        self.image2.setGeometry(300,5,250,250)
+        pic = QPixmap("Document 7_1.png")
+        self.image2.setPixmap(pic)
+        self.image2.setStyleSheet("""QLabel{border: 3px solid gray;
                                                 border-radius: 5px;
                                                 padding:0px}""")
 
@@ -954,7 +963,7 @@ class Formula2(QMainWindow):
         self.setWindowTitle("NEWTON'S FIRST LAW")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.move(5,5)
+        self.buttonback.move(3,5)
         self.buttonback.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
@@ -969,17 +978,40 @@ class Formula2(QMainWindow):
         self.buttonback.resize(50,30)
         self.buttonback.clicked.connect(self.Window2)
         self.textboxlb3 = QLabel("Enter Mass:",self)
-        self.textboxlb3.move(130,270)
+        self.textboxlb3.move(55,250)
+        self.textboxlb3.setStyleSheet("font-weight: bold;")
         self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',11))
+
         self.textboxlb4 = QLabel("Acceleration(X):",self)
-        self.textboxlb4.move(120,300)
-        self.textboxlb4.setFont(QtGui.QFont('Lucida Fax',10))
+        self.textboxlb4.setGeometry(55,300,150,30)
+        self.textboxlb4.setStyleSheet("font-weight: bold;")
+        self.textboxlb4.setFont(QtGui.QFont('Lucida Fax',11))
+
         self.textboxlb5 = QLabel("Acceleration(Y):",self)
-        self.textboxlb5.move(120,330)
-        self.textboxlb5.setFont(QtGui.QFont('Lucida Fax',10))
-        self.textboxlb6 = QLabel("Fnet:",self)
-        self.textboxlb6.move(135,360)
+        self.textboxlb5.setGeometry(55,350,150,30)
+        self.textboxlb5.move(55,350)
+        self.textboxlb5.setStyleSheet("font-weight: bold;")
+        self.textboxlb5.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textboxlb6 = QLabel("Fx:",self)
+        self.textboxlb6.move(230,250)
+        self.textboxlb6.setStyleSheet("font-weight: bold;")
         self.textboxlb6.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textboxlb7 = QLabel("Fy:",self)
+        self.textboxlb7.move(230,300)
+        self.textboxlb7.setStyleSheet("font-weight: bold;")
+        self.textboxlb7.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textboxlb8 = QLabel("Fnet:",self)
+        self.textboxlb8.move(230,350)
+        self.textboxlb8.setStyleSheet("font-weight: bold;")
+        self.textboxlb8.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.textboxlb9 = QLabel("Direction:",self)
+        self.textboxlb9.move(405,250)
+        self.textboxlb9.setStyleSheet("font-weight: bold;")
+        self.textboxlb9.setFont(QtGui.QFont('Lucida Fax',11))
 
         self.textbox6 = QLineEdit(self)
         self.textbox6.setStyleSheet("""QLineEdit{border: 2px solid gray;
@@ -988,8 +1020,8 @@ class Formula2(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.textbox6.setValidator(QDoubleValidator(self))
-        self.textbox6.move(220, 270)
-        self.textbox6.resize(200,30)
+        self.textbox6.move(55, 275)
+        self.textbox6.resize(150,30)
         self.textbox6.setText("0")
         self.textbox6.setToolTip("Enter Mass")
         self.textbox6.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1001,8 +1033,8 @@ class Formula2(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.ax.setValidator(QDoubleValidator(self))
-        self.ax.move(220, 300)
-        self.ax.resize(200,30)
+        self.ax.move(55, 325)
+        self.ax.resize(150,30)
         self.ax.setText("0")
         self.ax.setToolTip("Enter acceleration for x")
         self.ax.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1014,8 +1046,8 @@ class Formula2(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.ay.setValidator(QDoubleValidator(self))
-        self.ay.move(220, 330)
-        self.ay.resize(200,30)
+        self.ay.move(55, 375)
+        self.ay.resize(150,30)
         self.ay.setText("0")
         self.ay.setToolTip("Enter acceleration for y")
         self.ay.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1027,9 +1059,9 @@ class Formula2(QMainWindow):
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.textbox7.move(220, 360)
+        self.textbox7.move(230, 275)
         self.textbox7.resize(150,30)
-        self.textbox7.setToolTip("Fx and Fy")
+        self.textbox7.setToolTip("Fx")
         self.textbox7.setFont(QtGui.QFont('Lucida Fax',11))
 
         self.textbox8 = QLineEdit(self)
@@ -1039,17 +1071,50 @@ class Formula2(QMainWindow):
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.textbox8.move(220, 390)
+        self.textbox8.move(230, 325)
         self.textbox8.resize(150,30)
-        self.textbox8.setToolTip("F Magnitude")
+        self.textbox8.setToolTip("Fy")
         self.textbox8.setFont(QtGui.QFont('Lucida Fax',11))
+        
+        self.textbox9 = QLineEdit(self)
+        self.textbox9.setReadOnly(True)
+        self.textbox9.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox9.move(230, 375)
+        self.textbox9.resize(150,30)
+        self.textbox9.setToolTip("F Magnitude")
+        self.textbox9.setFont(QtGui.QFont('Lucida Fax',11))
 
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(405, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Fx")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
 
         self.button = QPushButton('Submit', self)
-        self.button.setStyleSheet("""QPushButton:hover{background-color: yellow}
-                                     QPushButton:pressed{background-color: rgb(0, 224, 157)}""")
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
         self.button.setToolTip("Submit your info")
-        self.button.move(230,420) # button.move(x,y)
+        self.button.move(445,325) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
 
     @pyqtSlot()
@@ -1071,11 +1136,18 @@ class Formula2(QMainWindow):
             fnety2 = float("{0:.2f}".format(fnety))
             fnet = ((fnetx2)**2+(fnety2)**2)**0.5
             fnet2 = float("{0:.2f}".format(fnet))
-            self.textbox7.setText(f"x({fnetx2})  y({fnety2})")
-            self.textbox8.setText(f"{fnet2}")
+            if acy == 0 or acx == 0:
+                angle3 = 0
+            else:
+                angle = np.arctan(fnety2/fnetx2)
+                pi = float("{0:.9f}".format(np.pi))
+                angle2 = angle*(180/pi)
+                angle3 = float("{0:.2f}".format(angle2))
+            self.textbox7.setText(f"x({fnetx2})")
+            self.textbox8.setText(f"y({fnety2})")
+            self.textbox9.setText(f"{fnet2}")
+            self.textbox10.setText(f"{angle3}")
 
-        
-        
         elif button == QMessageBox.No:
             pass
         
