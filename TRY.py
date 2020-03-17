@@ -79,6 +79,7 @@ class App(QWidget):
                                                 border-style: inset}""")
         self.button.setToolTip("Click to Login!")
         self.button.clicked.connect(self.data)
+        self.password.returnPressed.connect(self.button.click)
         
         self.register = QPushButton('Register',self)
         self.register.setFont(QtGui.QFont('Lucida Fax',11))
@@ -253,6 +254,7 @@ class registerWin(QWidget):
                                                 color: rgb(203, 177, 242);
                                                 border-style: inset}""")
         self.button.clicked.connect(self.data) 
+        self.textbox4.returnPressed.connect(self.button.click)
 
         self.button2 = QPushButton('Clear',self)
         self.button2.setFont(QtGui.QFont('Lucida Fax',11))
@@ -370,7 +372,7 @@ class Window2(QMainWindow):
         self.textboxlb2.move(265, 55)
         self.textboxlb2.setFont(QtGui.QFont('Castellar', 7))
         self.button2 = QPushButton("NEWTON'S FIRST LAW OF MOTION", self)
-        self.button2.setToolTip("Calculate the formula")
+        self.button2.setToolTip("View the first law of motion")
         self.button2.setStyleSheet("""QPushButton{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
@@ -384,7 +386,7 @@ class Window2(QMainWindow):
         self.button2.resize(300,30)
         
         self.button3 = QPushButton("NEWTON'S SECOND LAW OF MOTION", self)
-        self.button3.setToolTip("Calculate the formula")
+        self.button3.setToolTip("View the second law of motion")
         self.button3.setStyleSheet("""QPushButton{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
@@ -398,7 +400,7 @@ class Window2(QMainWindow):
         self.button3.resize(300,30)
         
         self.button4 = QPushButton("NEWTON'S THIRD LAW OF MOTION", self)
-        self.button4.setToolTip("Calculate the formula")
+        self.button4.setToolTip("View the third law of motion")
         self.button4.setStyleSheet("""QPushButton{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
@@ -412,7 +414,7 @@ class Window2(QMainWindow):
         self.button4.resize(300,30)
         
         self.button5 = QPushButton("TORQUE", self)
-        self.button5.setToolTip("Calculate the formula")
+        self.button5.setToolTip("View the torque")
         self.button5.setStyleSheet("""QPushButton{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
@@ -507,60 +509,30 @@ class Window3(QMainWindow):
         self.button1.move(260,310)
         self.button1.clicked.connect(self.Formula1)
         
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
+        self.textboxlbl = QLabel("READ!",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 18))
+        self.textboxlbl.setStyleSheet("""QLabel  {color: white;
+                                                border: 2px black;
+                                                border-radius: 5px;
+                                                padding: 2px;
+                                                border-style: outset;
+                                                background: black;
+                                                selection-background-color: darkgray;}""")
         self.textboxlbl.move(250, 10)
-        
-        self.desc1 = QLabel("<h3>“An object at rest will remain at rest, and an object in </h3>",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
-        
-        self.desc2 = QLabel("<h3>motion will remain in motion, at constant velocity </h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>and in a straight line, unless acted upon by a net force.”</h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>“In the absence of external forces and when viewed </h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3>from an inertial reference frame, an object at rest  </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>remains at rest and an object in motion continues in  </h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
-        
-        self.desc7 = QLabel("<h3>motion with a constant velocity (that is, with a constant  </h3>",self)
-        self.desc7.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc7.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc7.move(100, 240)
-        self.desc7.resize(440,30)
-        
-        self.desc7 = QLabel("<h3>speed in a straight line).” </h3>",self)
-        self.desc7.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc7.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc7.move(100, 270)
-        self.desc7.resize(440,30)
+        self.textboxlbl.setGeometry(250,5,90,40)
     
-    
+        self.desc1 = QPlainTextEdit("   An object at rest will remain at rest, and an object in \nmotion will remain in motion, at constant velocity and \nin a straight line, unless acted upon by a net force.\n\n    In the absence of external forces and when viewed \nfrom an inertial reference frame, an object at rest\nremains at rest and an object in motion continues in\nmotion with a constant velocity \n(that is, with a constant speed in a straight line).",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,50,450,230)
 
     def Window2(self):
         self.w = Window2()
@@ -631,7 +603,6 @@ class Window4(QMainWindow):
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
         self.textboxlbl.move(250, 10)
         
         self.desc1 = QLabel("<h3>“Newton’s second law answers the question of </h3> ",self)
@@ -738,7 +709,6 @@ class Window5(QMainWindow):
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
         self.textboxlbl.move(250, 10)
         
         self.desc1 = QLabel("<h3>“If two objects interact, the force exerted by object 1 </h3>",self)
@@ -845,7 +815,6 @@ class Window6(QMainWindow):
         
         self.textboxlbl = QLabel("<h1>READ!</h1>",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        #self.textboxlbl.setGraphicsEffect(QGraphicsBlurEffect())
         self.textboxlbl.move(250, 10)
         
         self.desc1 = QLabel("<h3>“Torque is the tendency of a force to rotate an object </h3>",self)
@@ -951,7 +920,7 @@ class Formula1(QMainWindow):
         self.textbox6.setText("0")
         self.textbox6.setToolTip("Enter Mass")
         self.textbox6.setFont(QtGui.QFont('Lucida Fax',11))
-        
+
         self.textbox7 = QLineEdit(self)
         self.textbox7.setReadOnly(True)
         self.textbox7.setStyleSheet("""QLineEdit{border: 2px solid gray;
@@ -980,6 +949,7 @@ class Formula1(QMainWindow):
         self.button.setToolTip("Submit your info")
         self.button.move(280,345) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
+        self.textbox6.returnPressed.connect(self.button.click)
 
     @pyqtSlot()
     def prof(self):
@@ -1199,6 +1169,8 @@ class Formula2(QMainWindow):
         self.button.setToolTip("Submit your info")
         self.button.move(445,325) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
+        self.ax.returnPressed.connect(self.button.click)
+        self.ay.returnPressed.connect(self.button.click)
 
     @pyqtSlot()
     def prof(self):
