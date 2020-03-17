@@ -399,8 +399,8 @@ class Window2(QMainWindow):
         self.button3.move(150,150)
         self.button3.resize(300,30)
         
-        self.button4 = QPushButton("NEWTON'S THIRD LAW OF MOTION", self)
-        self.button4.setToolTip("View the third law of motion")
+        self.button4 = QPushButton("WORK, POWER AND ENERGY", self)
+        self.button4.setToolTip("View work, power and energy")
         self.button4.setStyleSheet("""QPushButton{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
@@ -413,8 +413,8 @@ class Window2(QMainWindow):
         self.button4.move(150,210)
         self.button4.resize(300,30)
         
-        self.button5 = QPushButton("TORQUE", self)
-        self.button5.setToolTip("View the torque")
+        self.button5 = QPushButton("FLUID DYNAMICS", self)
+        self.button5.setToolTip("View fluid dynamics")
         self.button5.setStyleSheet("""QPushButton{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
@@ -432,6 +432,7 @@ class Window2(QMainWindow):
         self.button3.clicked.connect(self.Window4)
         self.button4.clicked.connect(self.Window5)
         self.button5.clicked.connect(self.Window6)
+        self.show()
 
     def Window3(self):                                           
         self.w = Window3()
@@ -521,7 +522,7 @@ class Window3(QMainWindow):
         self.textboxlbl.move(250, 10)
         self.textboxlbl.setGeometry(250,5,90,40)
     
-        self.desc1 = QPlainTextEdit("   An object at rest will remain at rest, and an object in \nmotion will remain in motion, at constant velocity and \nin a straight line, unless acted upon by a net force.\n\n    In the absence of external forces and when viewed \nfrom an inertial reference frame, an object at rest\nremains at rest and an object in motion continues in\nmotion with a constant velocity \n(that is, with a constant speed in a straight line).",self)
+        self.desc1 = QPlainTextEdit("LAW OF INERTIA\n    An object at rest will remain at rest, and an object in \nmotion will remain in motion, at constant velocity and \nin a straight line, unless acted upon by a net force.\n\n    In the absence of external forces and when viewed \nfrom an inertial reference frame, an object at rest\nremains at rest and an object in motion continues in\nmotion with a constant velocity \n(that is, with a constant speed in a straight line).",self)
         self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
         self.desc1.setReadOnly(True)
         self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
@@ -561,7 +562,7 @@ class Window4(QMainWindow):
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
         self.setGeometry(400,220,600,350)
-        self.setWindowTitle("NEWTON'S SECOND LAW")
+        self.setWindowTitle("NEWTON'S FIRST LAW")
         
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
@@ -601,46 +602,31 @@ class Window4(QMainWindow):
         self.button1.move(260,310)
         self.button1.clicked.connect(self.Formula2)
         
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
+        self.textboxlbl = QLabel("READ!",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 18))
+        self.textboxlbl.setStyleSheet("""QLabel  {color: white;
+                                                border: 2px black;
+                                                border-radius: 5px;
+                                                padding: 2px;
+                                                border-style: outset;
+                                                background: black;
+                                                selection-background-color: darkgray;}""")
         self.textboxlbl.move(250, 10)
-        
-        self.desc1 = QLabel("<h3>“Newton’s second law answers the question of </h3> ",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
-        
-        self.desc2 = QLabel("<h3>forces acting on it.”  </h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>“When viewed from an inertial reference frame, </h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>the acceleration of an object is directly proportional</h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3>to the net force acting on it and inversely  </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>proportional to its mass.” </h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
+        self.textboxlbl.setGeometry(250,5,90,40)
     
+        self.desc1 = QPlainTextEdit("LAW OF ACCELERATION\n    Newton's second law of motion answers the question of what happennds to an object that has one or more forces acting on it.\n    When viewed from an inertia; reference frame, the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,50,450,230)
+
     def Window2(self):
         self.w = Window2()
         self.w.show()
@@ -666,13 +652,17 @@ class Window5(QMainWindow):
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
-        self.setGeometry(400,220,600,350)
-        self.setWindowTitle("NEWTON'S THIRD LAW")
-        
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("WORK, POWER, ENERGY")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
         self.buttonback.move(5,5)
-        self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
         self.buttonback.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
@@ -684,97 +674,142 @@ class Window5(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(53,35)
-        self.buttonback.clicked.connect(self.Window2)
+        self.buttonback.resize(80,30)
         
-        self.button1 = QPushButton("Formula",self)
-        self.button1.setToolTip("View the formula")
-        self.button1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.button1 = QPushButton("WORK",self)
+        self.button1.setToolTip("Go back to topics")
+        self.button1.move(15,360)
         self.button1.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
                                                 padding: 8px;
                                                 border-style: outset;
                                                 background: lightblue;
-                                                selection-background-color: darkgray;}
-                                                QPushButton:hover{border: 2px lightblue;
-                                                                    background-color: green;
-                                                                    color: lightblue;}
-                                                QPushButton:pressed{background-color: green;
-                                                color: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button1.resize(80,35)
-        self.button1.move(260,310)
-        self.button1.clicked.connect(self.Formula3)
+        self.button1.resize(150,30)
         
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        self.textboxlbl.move(250, 10)
+        self.button2 = QPushButton("POWER",self)
+        self.button2.setToolTip("Go back to topics")
+        self.button2.move(210,360)
+        self.button2.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button2.resize(150,30)
         
-        self.desc1 = QLabel("<h3>“If two objects interact, the force exerted by object 1 </h3>",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
+        self.button3 = QPushButton("ENERGY",self)
+        self.button3.setToolTip("Go back to topics")
+        self.button3.move(405,360)
+        self.button3.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button3.resize(150,30)
         
-        self.desc2 = QLabel("<h3>on object 2 is equal in magnitude and opposite  </h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
+        self.desc1 = QPlainTextEdit("    WORK is the amount of energy transferred by a force acting through a distance.\n    The French mathematician Gaspard-Gustave Coriolis first coied the term work in 1826.\n    Work is zero, when F is perpendicular to delta r.\n    Work is positive, when F and delta r are in the same direction.\n    Work is negative, when F and delta r are in the opposite direction.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(15,50,180,300)
         
-        self.desc3 = QLabel("<h3>in direction to the force exerted by object 2 on object 1.”</h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
         
-        self.desc4 = QLabel("<h3>“The force that object 1 exerts on object 2 is popularly  </h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
+        self.desc2 = QPlainTextEdit("    POWER measures the rate of work done.\n     It also rate at which energy expended.\n    Power is the amount of work done, divided by the time it takes to do it.\n    Where: P = W/t\n\t P = Power in Watt\n\t W = Work in Joules\n\t t = time in seconds\n\t    Since work performed equals energy expended, The watt is defined as the expenditure of 1 joule in 1 second.",self)
+        self.desc2.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc2.setReadOnly(True)
+        self.desc2.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc2.move(50, 60)
+        self.desc2.setGeometry(210,50,180,300)
         
-        self.desc5 = QLabel("<h3> called the action force, and the force of object 2 on </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
+        self.desc3 = QPlainTextEdit("    ENERGY is the ability to do work. It is a combination of energy and matter make up the universe: Matter is substance, and energy is the mover of substance.\n    THE LAW OF CONSERVATION OF ENERGY\n    Energy cannot be created or destroyed; it may be transformed from one from into another, but the total amout of energy never changes.",self)
+        self.desc3.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc3.setReadOnly(True)
+        self.desc3.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc3.move(50, 60)
+        self.desc3.setGeometry(405,50,180,300)
         
-        self.desc6 = QLabel("<h3>object 1 is called the reaction force. “</h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
-
-    def Window2(self):
+        self.buttonback.clicked.connect(self.Window2)
+        self.button1.clicked.connect(self.Work)
+        self.button2.clicked.connect(self.Power)
+        self.button3.clicked.connect(self.Energy)
+        
+    def Window2(self):                                          
         self.w = Window2()
         self.w.show()
         self.hide()
-    
-    def Formula3(self):
-        self.w = Formula3()
+        
+    def Work(self):                                          
+        self.w = Work()
         self.w.show()
         self.hide()
-    
+
+    def Power(self):                                          
+        self.w = Power()
+        self.w.show()
+        self.hide()
+
+    def Energy(self):                                          
+        self.w = Energy()
+        self.w.show()
+        self.hide()
+
+
+
+  
 class Window6(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        oImage = QImage("calculate.jpg")
-        sImage = oImage.scaled(QSize(800,800))   
+        
+        self.setWindowTitle("PHYSICS(calculus-based)")
+        self.setWindowIcon(QIcon('young-lion_97429.ico')) 
+        oImage = QImage("first.jpg")
+        sImage = oImage.scaled(QSize(550,350))   
         palette = QPalette()
-        palette.setBrush(10, QBrush(sImage)) 
+        palette.setBrush(10, QBrush(sImage))                        
         self.setPalette(palette)
         self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
+        self.label.setGeometry(0,0,600,350)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
-        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setPixmap(QPixmap("first.jpg"))
         self.label.setScaledContents(True)
         self.setGeometry(400,220,600,350)
-        self.setWindowTitle("TORQUE")
-        
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
         self.buttonback.move(5,5)
@@ -791,77 +826,91 @@ class Window6(QMainWindow):
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
-        self.buttonback.clicked.connect(self.Window2)
-        
-        self.button1 = QPushButton("Formula",self)
-        self.button1.setToolTip("View the formula")
-        self.button1.setFont(QtGui.QFont('Lucida Fax',11))
-        self.button1.setStyleSheet("""QPushButton  {color: green;
-                                                border: 2px green;
-                                                border-radius: 5px;
+  
+
+        self.desc1 = QPlainTextEdit("    FLUID is a collection of molecules that are randomly arranged and held together by weak cohesive forces exerted by the walls of the container.\n\n    It is also a matter that flows under pressure, which includes liquids, gases, and even plasmas. Water, air, sun and even molasses are fluid.\n\n    FLUID DYNAMICS is the study of fluids in motion.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
                                                 padding: 8px;
                                                 border-style: outset;
                                                 background: lightblue;
-                                                selection-background-color: darkgray;}
-                                                QPushButton:hover{border: 2px lightblue;
-                                                                    background-color: green;
-                                                                    color: lightblue;}
-                                                QPushButton:pressed{background-color: green;
-                                                color: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 5)
+        self.desc1.setGeometry(80,5,450,200)
+        
+        self.button3 = QPushButton("D  E  N  S  I  T  Y", self)
+        self.button3.setToolTip("View the second law of motion")
+        self.button3.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: pink;
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button1.resize(80,35)
-        self.button1.move(260,310)
-        self.button1.clicked.connect(self.Formula4)
+        self.button3.move(150,240)
+        self.button3.resize(300,30)
         
-        self.textboxlbl = QLabel("<h1>READ!</h1>",self)
-        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 12))
-        self.textboxlbl.move(250, 10)
         
-        self.desc1 = QLabel("<h3>“Torque is the tendency of a force to rotate an object </h3>",self)
-        self.desc1.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc1.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc1.move(100, 60)
-        self.desc1.resize(440,30)
+        self.button4 = QPushButton("P  R  E  S  S  U  R  E", self)
+        self.button4.setToolTip("View the third law of motion")
+        self.button4.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: pink;
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button4.move(150,270)
+        self.button4.resize(300,30)
         
-        self.desc2 = QLabel("<h3>about an axis, fulcrum, or pivot. Just as a force is a</h3>",self)
-        self.desc2.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc2.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc2.move(100, 90)
-        self.desc2.resize(440,30)
-        
-        self.desc3 = QLabel("<h3>push or a pull, a torque can be thought of as a twist.”</h3>",self)
-        self.desc3.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc3.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc3.move(100, 120)
-        self.desc3.resize(440,30)
-        
-        self.desc4 = QLabel("<h3>“It is a measure of the turning force on an object such </h3>",self)
-        self.desc4.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc4.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc4.move(100, 150)
-        self.desc4.resize(440,30)
-        
-        self.desc5 = QLabel("<h3>as a bolt or a flywheel. It is an influence which tends  </h3>",self)
-        self.desc5.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc5.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc5.move(100, 180)
-        self.desc5.resize(440,30)
-        
-        self.desc6 = QLabel("<h3>to change the rotational motion of an object.“</h3>",self)
-        self.desc6.setFont(QtGui.QFont('Bradley Hand ITC', 10))
-        self.desc6.setStyleSheet("""QLabel{ background: lightblue;}""")
-        self.desc6.move(100, 210)
-        self.desc6.resize(440,30)
+        self.button5 = QPushButton("TORRICELLI'S PRINCIPLE", self)
+        self.button5.setToolTip("View fluid dynamics")
+        self.button5.setStyleSheet("""QPushButton{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 6px;
+                                                border-style: outset;
+                                                background: pink;
+                                                selection-background-color: darkgray;}       
+                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button5.move(150,300)
+        self.button5.resize(300,30)
+    
+        self.button3.clicked.connect(self.Fdensity)
+        self.button4.clicked.connect(self.Fpressure)
+        self.button5.clicked.connect(self.Ftorri)
+        self.buttonback.clicked.connect(self.Window2)
 
-    def Window2(self):
+        self.show()
+
+    def Fdensity(self):                                           
+        self.w = Fdensity()
+        self.w.show()
+        self.hide()
+        
+    def Fpressure(self):                                       
+        self.w = Fpressure()
+        self.w.show()
+        self.hide()
+        
+    def Ftorri(self):                                          
+        self.w = Ftorri()
+        self.w.show()
+        self.hide()
+        
+    def Window2(self):                                          
         self.w = Window2()
         self.w.show()
         self.hide()
-    
-    def Formula4(self):
-        self.w = Formula4()
-        self.w.show()
-        self.hide()
+
        
 class Formula1(QMainWindow):
     def __init__(self):
@@ -1256,7 +1305,7 @@ class Formula3(QMainWindow):
         self.hide()        
         
         
-class Formula4(QMainWindow):
+class Fdensity(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
@@ -1273,15 +1322,14 @@ class Formula4(QMainWindow):
         self.setGeometry(400,190,600,420)
         self.setWindowTitle("NEWTON'S FIRST LAW")
         self.image1 = QLabel(self)
-        self.image1.setGeometry(180,15,250,250)
-        pic = QPixmap("torque.jpg")
-        self.image1.setPixmap(pic)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
         self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
                                                 border-radius: 5px;
                                                 padding:0px}""")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.move(5,5)
+        self.buttonback.move(405,365)
         self.buttonback.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
@@ -1293,66 +1341,49 @@ class Formula4(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(50,30)
-        self.buttonback.clicked.connect(self.Window2)
-        #self.textboxlb3 = QLabel("Enter Mass:",self)
-        #self.textboxlb3.move(130,270)
-        #self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',11))
-        #self.textboxlb4 = QLabel("Weight:",self)
-        #self.textboxlb4.move(150,300)
-        #self.textboxlb4.setFont(QtGui.QFont('Lucida Fax',11))
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Window6)
 
-        self.force = QLineEdit(self)
-        self.force.setStyleSheet("""QLineEdit{border: 2px solid gray;
+        self.desc1 = QPlainTextEdit("    DENSITY is a scalar quantity defined as the ratio of an object's mass to the volume it occupies, and is frequently given the symbol rho in physics.\n    It is also known as mass density.\n    NOTE: less dense fluids will float on top of more dense fluids, and less dense solids will float on top of more dense fluids(keeping in mind that the average density of the entire solid object must be considered.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,15,250,250)
+
+        self.mass = QLineEdit(self)
+        self.mass.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.force.setValidator(QDoubleValidator(self))
-        self.force.move(55, 275)
-        self.force.resize(150,30)
-        self.force.setText("0")
-        self.force.setToolTip("Enter Force")
-        self.force.setFont(QtGui.QFont('Lucida Fax',11))
+        self.mass.setValidator(QDoubleValidator(self))
+        self.mass.move(100, 275)
+        self.mass.resize(150,30)
+        self.mass.setText("0")
+        self.mass.setToolTip("Enter Mass")
+        self.mass.setFont(QtGui.QFont('Lucida Fax',11))
 
-        self.radius = QLineEdit(self)
-        self.radius.setStyleSheet("""QLineEdit{border: 2px solid gray;
+        self.vol = QLineEdit(self)
+        self.vol.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.radius.setValidator(QDoubleValidator(self))
-        self.radius.move(55, 325)
-        self.radius.resize(150,30)
-        self.radius.setText("0")
-        self.radius.setToolTip("Enter Radius")
-        self.radius.setFont(QtGui.QFont('Lucida Fax',11))
+        self.vol.setValidator(QDoubleValidator(self))
+        self.vol.move(100, 325)
+        self.vol.resize(150,30)
+        self.vol.setText("0")
+        self.vol.setToolTip("Enter Volume")
+        self.vol.setFont(QtGui.QFont('Lucida Fax',11))
     
-        self.angx = QLineEdit(self)
-        self.angx.setValidator(QDoubleValidator(self))
-        self.angx.setStyleSheet("""QLineEdit{border: 2px solid gray;
-                                                border-radius: 10px;
-                                                padding: 0 8px;
-                                                background: yellow;
-                                                selection-background-color: darkgray;}""")
-        self.angx.move(230, 275)
-        self.angx.resize(150,30)
-        self.angx.setText("0")
-        self.angx.setToolTip("Angle(cosine)")
-        self.angx.setFont(QtGui.QFont('Lucida Fax',11))
-
-        self.angy = QLineEdit(self)
-        self.angy.setValidator(QDoubleValidator(self))
-        self.angy.setStyleSheet("""QLineEdit{border: 2px solid gray;
-                                                border-radius: 10px;
-                                                padding: 0 8px;
-                                                background: yellow;
-                                                selection-background-color: darkgray;}""")
-        self.angy.move(230, 325)
-        self.angy.resize(150,30)
-        self.angy.setText("0")
-        self.angy.setToolTip("Angle(sin)")
-        self.angy.setFont(QtGui.QFont('Lucida Fax',11))
+    
 
         self.textbox10 = QLineEdit(self)
         self.textbox10.setReadOnly(True)
@@ -1361,9 +1392,9 @@ class Formula4(QMainWindow):
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.textbox10.move(405, 275)
+        self.textbox10.move(365, 275)
         self.textbox10.resize(150,30)
-        self.textbox10.setToolTip("Torque")
+        self.textbox10.setToolTip("Density")
         self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
 
         self.button = QPushButton('Submit', self)
@@ -1380,25 +1411,23 @@ class Formula4(QMainWindow):
                                                 border-style: inset}""")
         self.button.resize(80,30)
         self.button.setToolTip("Submit your info")
-        self.button.move(280,345) # button.move(x,y)
+        self.button.move(405,325) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
 
     @pyqtSlot()
     def prof(self):
-        force = float(self.force.text())
-        dis = float(self.radius.text())
-        ax = float(self.angx.text())
-        ay = float(self.angy.text())
-        self.Submit(force,dis,ax,ay)
+        mass = float(self.mass.text())
+        vol = float(self.vol.text())
+        self.Submit(mass,vol)
     
-    def Submit(self,force,dis,ax,ay):
+    def Submit(self,mass,vol):
         button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
             QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
     
-        if button == QMessageBox.Yes and force != "" and dis != "":
-            torque = force*dis
-            torque2 = float("{0:.2f}".format(torque))
-            self.textbox10.setText(f"{torque2}")
+        if button == QMessageBox.Yes and mass != "" and vol != "":
+            density = mass/vol
+            density2 = float("{0:.2f}".format(density))
+            self.textbox10.setText(f"{density2}")
         
         
         elif button == QMessageBox.No:
@@ -1409,10 +1438,705 @@ class Formula4(QMainWindow):
         else:
            QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
         
-    def Window2(self):
-        self.w = Window2()
+    def Window6(self):
+        self.w = Window6()
         self.w.show()
         self.hide()
+        
+        
+        
+class Fpressure(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("PRESSURE")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.move(405,365)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Window6)
+
+        
+        self.desc1 = QPlainTextEdit("    PRESSURE is the effect of a force acting upon a surface. It is a scalar quantity calculated as the force applied per unit area, where the force applied is always perpendicular to the surface.\nNOTE:\n101 325 Pa\n\t=1 atm\n\t=1.01325\n\t=14.70 psi\n\t= 760 mmHg",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,15,250,250)
+
+        self.force = QLineEdit(self)
+        self.force.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.force.setValidator(QDoubleValidator(self))
+        self.force.move(100, 275)
+        self.force.resize(150,30)
+        self.force.setText("0")
+        self.force.setToolTip("Enter Force")
+        self.force.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.area = QLineEdit(self)
+        self.area.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.area.setValidator(QDoubleValidator(self))
+        self.area.move(100, 325)
+        self.area.resize(150,30)
+        self.area.setText("0")
+        self.area.setToolTip("Enter Area")
+        self.area.setFont(QtGui.QFont('Lucida Fax',11))
+    
+    
+
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(365, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Density")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
+        self.button.setToolTip("Submit your info")
+        self.button.move(405,325) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        force = float(self.force.text())
+        area = float(self.area.text())
+        self.Submit(force,area)
+    
+    def Submit(self,force,area):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and force != "" and area != "":
+            pressure = force/area
+            pressure2 = float("{0:.2f}".format(pressure))
+            self.textbox10.setText(f"{pressure2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
+    def Window6(self):
+        self.w = Window6()
+        self.w.show()
+        self.hide()
+        
+        
+class Ftorri(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("TORRICELLI'S PRINCIPLE")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.move(405,365)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Window6)
+        
+        self.desc1 = QPlainTextEdit(" TORRICELLI'S PRINCIPLE\n     The speed of liquid leaving a hole a distance h(height) below the surface is equal to that acquired by an object falling freely through a vertical distance h.\n    statement that the speed, v, of a liquid flowing under the force of gravity out of an opening in a tank is proportional jointly to the square root of the vertical distance, h, between the liquid surface and the centre of the opening and to the square root of twice the acceleration caused by gravity, 2g, or simply v = (2gh)1/2. (The value of the acceleration caused by gravity at the Earth’s surface is about 32.2 feet per second per second, or 9.8 metres per second per second.) The theorem is named after Evangelista Torricelli, who discovered it in 1643.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,15,250,250)
+
+        self.height = QLineEdit(self)
+        self.height.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.height.setValidator(QDoubleValidator(self))
+        self.height.move(100, 275)
+        self.height.resize(150,30)
+        self.height.setText("0")
+        self.height.setToolTip("Enter height")
+        self.height.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.grav = QLineEdit(self)
+        self.grav.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+
+        self.grav.move(100, 325)
+        self.grav.resize(150,30)
+        self.grav.setText("9.8")
+        self.grav.setToolTip("Enter Volume")
+        self.grav.setReadOnly(True)
+    
+    
+
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(365, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Density")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
+        self.button.setToolTip("Submit your info")
+        self.button.move(405,325) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        height = float(self.height.text())
+        grav = 9.8
+        self.Submit(height,grav)
+    
+    def Submit(self,height,grav):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and height != "":
+            torri = (2*grav*height)**(.5)
+            torri2 = float("{0:.2f}".format(torri))
+            self.textbox10.setText(f"{torri2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
+    def Window6(self):
+        self.w = Window6()
+        self.w.show()
+        self.hide()
+        
+class Work(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("WORK")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.move(405,365)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Window5)
+        
+        self.desc1 = QPlainTextEdit(" TORRICELLI'S PRINCIPLE\n     The speed of liquid leaving a hole a distance h(height) below the surface is equal to that acquired by an object falling freely through a vertical distance h.\n    statement that the speed, v, of a liquid flowing under the force of gravity out of an opening in a tank is proportional jointly to the square root of the vertical distance, h, between the liquid surface and the centre of the opening and to the square root of twice the acceleration caused by gravity, 2g, or simply v = (2gh)1/2. (The value of the acceleration caused by gravity at the Earth’s surface is about 32.2 feet per second per second, or 9.8 metres per second per second.) The theorem is named after Evangelista Torricelli, who discovered it in 1643.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,15,250,250)
+
+        self.height = QLineEdit(self)
+        self.height.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.height.setValidator(QDoubleValidator(self))
+        self.height.move(100, 275)
+        self.height.resize(150,30)
+        self.height.setText("0")
+        self.height.setToolTip("Enter height")
+        self.height.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.grav = QLineEdit(self)
+        self.grav.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+
+        self.grav.move(100, 325)
+        self.grav.resize(150,30)
+        self.grav.setText("9.8")
+        self.grav.setToolTip("Enter Volume")
+        self.grav.setReadOnly(True)
+    
+    
+
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(365, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Density")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
+        self.button.setToolTip("Submit your info")
+        self.button.move(405,325) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        height = float(self.height.text())
+        grav = 9.8
+        self.Submit(height,grav)
+    
+    def Submit(self,height,grav):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and height != "":
+            torri = (2*grav*height)**(.5)
+            torri2 = float("{0:.2f}".format(torri))
+            self.textbox10.setText(f"{torri2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
+    def Window5(self):
+        self.w = Window5()
+        self.w.show()
+        self.hide()
+        
+class Power(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("POWER")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.move(405,365)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Window5)
+        
+        self.desc1 = QPlainTextEdit(" TORRICELLI'S PRINCIPLE\n     The speed of liquid leaving a hole a distance h(height) below the surface is equal to that acquired by an object falling freely through a vertical distance h.\n    statement that the speed, v, of a liquid flowing under the force of gravity out of an opening in a tank is proportional jointly to the square root of the vertical distance, h, between the liquid surface and the centre of the opening and to the square root of twice the acceleration caused by gravity, 2g, or simply v = (2gh)1/2. (The value of the acceleration caused by gravity at the Earth’s surface is about 32.2 feet per second per second, or 9.8 metres per second per second.) The theorem is named after Evangelista Torricelli, who discovered it in 1643.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,15,250,250)
+
+        self.height = QLineEdit(self)
+        self.height.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.height.setValidator(QDoubleValidator(self))
+        self.height.move(100, 275)
+        self.height.resize(150,30)
+        self.height.setText("0")
+        self.height.setToolTip("Enter height")
+        self.height.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.grav = QLineEdit(self)
+        self.grav.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+
+        self.grav.move(100, 325)
+        self.grav.resize(150,30)
+        self.grav.setText("9.8")
+        self.grav.setToolTip("Enter Volume")
+        self.grav.setReadOnly(True)
+    
+    
+
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(365, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Density")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
+        self.button.setToolTip("Submit your info")
+        self.button.move(405,325) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        height = float(self.height.text())
+        grav = 9.8
+        self.Submit(height,grav)
+    
+    def Submit(self,height,grav):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and height != "":
+            torri = (2*grav*height)**(.5)
+            torri2 = float("{0:.2f}".format(torri))
+            self.textbox10.setText(f"{torri2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
+    def Window5(self):
+        self.w = Window5()
+        self.w.show()
+        self.hide()
+        
+class Energy(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("ENERGY")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        image1 = QPixmap("density.png")
+        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
+                                                border-radius: 5px;
+                                                padding:0px}""")
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to topics")
+        self.buttonback.move(405,365)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Window5)
+        
+        self.desc1 = QPlainTextEdit(" TORRICELLI'S PRINCIPLE\n     The speed of liquid leaving a hole a distance h(height) below the surface is equal to that acquired by an object falling freely through a vertical distance h.\n    statement that the speed, v, of a liquid flowing under the force of gravity out of an opening in a tank is proportional jointly to the square root of the vertical distance, h, between the liquid surface and the centre of the opening and to the square root of twice the acceleration caused by gravity, 2g, or simply v = (2gh)1/2. (The value of the acceleration caused by gravity at the Earth’s surface is about 32.2 feet per second per second, or 9.8 metres per second per second.) The theorem is named after Evangelista Torricelli, who discovered it in 1643.",self)
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setReadOnly(True)
+        self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;}""")
+        self.desc1.move(50, 60)
+        self.desc1.setGeometry(80,15,250,250)
+
+        self.height = QLineEdit(self)
+        self.height.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.height.setValidator(QDoubleValidator(self))
+        self.height.move(100, 275)
+        self.height.resize(150,30)
+        self.height.setText("0")
+        self.height.setToolTip("Enter height")
+        self.height.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.grav = QLineEdit(self)
+        self.grav.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+
+        self.grav.move(100, 325)
+        self.grav.resize(150,30)
+        self.grav.setText("9.8")
+        self.grav.setToolTip("Enter Volume")
+        self.grav.setReadOnly(True)
+    
+    
+
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(365, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Density")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
+        self.button.setToolTip("Submit your info")
+        self.button.move(405,325) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        height = float(self.height.text())
+        grav = 9.8
+        self.Submit(height,grav)
+    
+    def Submit(self,height,grav):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and height != "":
+            torri = (2*grav*height)**(.5)
+            torri2 = float("{0:.2f}".format(torri))
+            self.textbox10.setText(f"{torri2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
+    def Window5(self):
+        self.w = Window5()
+        self.w.show()
+        self.hide()
+
         
 if __name__ == "__main__":
 
