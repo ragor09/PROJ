@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator, QLinearGradient
 from PyQt5.QtCore import pyqtSlot, QSize
 
-class App(QWidget):
+class App(QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         self.title = "PHYSICS"
@@ -159,7 +159,7 @@ class StudentLog:
         self.user = user
         self.passw = passw
 
-class registerWin(QWidget):
+class registerWin(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
@@ -355,7 +355,7 @@ class registerWin(QWidget):
         self.hide()
         
         
-class Window2(QMainWindow):                         
+class Window2(QWidget):                         
     def __init__(self):
         super().__init__()
         
@@ -1069,7 +1069,7 @@ class Formula2(QMainWindow):
                                                 padding:0px}""")
 
         self.setGeometry(400,190,600,440)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.setWindowTitle("NEWTON'S SECOND LAW")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
         self.buttonback.move(3,5)
@@ -2010,27 +2010,22 @@ class Energy(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
-        oImage = QImage("calculate.jpg")
-        sImage = oImage.scaled(QSize(800,800))   
+        oImage = QImage("first.jpg")
+        sImage = oImage.scaled(QSize(550,350))  
         palette = QPalette()
         palette.setBrush(10, QBrush(sImage)) 
         self.setPalette(palette)
         self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
+        self.label.setGeometry(0,0,600,420)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
-        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setPixmap(QPixmap("first.jpg"))
         self.label.setScaledContents(True)
         self.setGeometry(400,190,600,420)
         self.setWindowTitle("ENERGY")
-        self.image1 = QLabel(self)
-        self.image1.setGeometry(305,15,250,250)
-        image1 = QPixmap("density.png")
-        self.image1.setStyleSheet("""QLabel{border: 3px solid gray;
-                                                border-radius: 5px;
-                                                padding:0px}""")
+        
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.move(405,365)
+        self.buttonback.move(5,5)
         self.buttonback.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
@@ -2045,7 +2040,29 @@ class Energy(QMainWindow):
         self.buttonback.resize(80,30)
         self.buttonback.clicked.connect(self.Window5)
         
-        self.desc1 = QPlainTextEdit(" TORRICELLI'S PRINCIPLE\n     The speed of liquid leaving a hole a distance h(height) below the surface is equal to that acquired by an object falling freely through a vertical distance h.\n    statement that the speed, v, of a liquid flowing under the force of gravity out of an opening in a tank is proportional jointly to the square root of the vertical distance, h, between the liquid surface and the centre of the opening and to the square root of twice the acceleration caused by gravity, 2g, or simply v = (2gh)1/2. (The value of the acceleration caused by gravity at the Earth’s surface is about 32.2 feet per second per second, or 9.8 metres per second per second.) The theorem is named after Evangelista Torricelli, who discovered it in 1643.",self)
+        self.textboxlbl = QLabel("POTENTIAL ENERGY",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 14))
+        self.textboxlbl.setStyleSheet("""QLabel  {color: black;
+                                                border: 2px black;
+                                                border-radius: 5px;
+                                                padding: 2px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;}""")
+        self.textboxlbl.setGeometry(50,50,200,45)
+        
+        self.textboxlb2 = QLabel("KINETIC ENERGY",self)
+        self.textboxlb2.setFont(QtGui.QFont('Times New Roman', 14))
+        self.textboxlb2.setStyleSheet("""QLabel  {color: black;
+                                                border: 2px black;
+                                                border-radius: 5px;
+                                                padding: 2px;
+                                                border-style: outset;
+                                                background: rgb(203, 177, 242);
+                                                selection-background-color: darkgray;}""")
+        self.textboxlb2.setGeometry(350,50,170,45)
+        
+        self.desc1 = QPlainTextEdit("What is Potential Energy?\n   Energy that is stored and waiting to be used later.\nGRAVITATIONAL ENERGY\n   It is a potential energy due to an object's position.\n   It is also associated with an object at a given location above the surface of the Earth.\nWHERE:\n   U = gravitational potential energy in Joules\n   m = mass\n   g = gravity\n   y = distance above the Earth's surface",self)
         self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
         self.desc1.setReadOnly(True)
         self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
@@ -2053,39 +2070,155 @@ class Energy(QMainWindow):
                                                 border-radius: 30px;
                                                 padding: 8px;
                                                 border-style: outset;
-                                                background: lightblue;
-                                                selection-background-color: darkgray;}""")
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgba(98, 211, 162, 255));
+                                                selection-background-color: green;}""")
         self.desc1.move(50, 60)
-        self.desc1.setGeometry(80,15,250,250)
+        self.desc1.setGeometry(30,100,250,250)
+        
+        
+        self.desc2 = QPlainTextEdit("What is Kinetic Energy?\n   Energy an object has due to its motion.\n   A change in Kinetic Energy is one possible result of doing Work in transfer energy into a system.\nNOTE:\n   The speed of the system increases if the work done on it is positive.\n   The speed of the system decreases if the net work is negative.\nWHERE:\n   K = 1/2mv^2\n   K = kinetic energy\n   m = mass of the particle in kg\n   v = speed of the particle",self)
+        self.desc2.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc2.setReadOnly(True)
+        self.desc2.setStyleSheet("""QPlainTextEdit{color: black;
+                                                border: 3px black;
+                                                border-radius: 30px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgba(98, 211, 162, 255));
+                                                selection-background-color: green;}""")
+        self.desc2.move(50, 60)
+        self.desc2.setGeometry(310,100,250,250)
 
-        self.height = QLineEdit(self)
-        self.height.setStyleSheet("""QLineEdit{border: 2px solid gray;
+        
+        self.button = QPushButton('POTENTIAL ENERGY\nFORMULA', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(150,50)
+        self.button.setToolTip("Potential Energy")
+        self.button.move(80,360)
+        self.button.clicked.connect(self.Potential)
+        
+        
+        self.button2 = QPushButton('KINETIC ENERGY\nFORMULA', self)
+        self.button2.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button2.resize(150,50)
+        self.button2.setToolTip("Kinetic Energy")
+        self.button2.move(360,360)
+        self.button2.clicked.connect(self.Kinetic)
+
+
+    def Window5(self):
+        self.w = Window5()
+        self.w.show()
+        self.hide()
+        
+    def Potential(self):
+        self.w = Potential()
+        self.w.show()
+        self.hide()
+        
+    def Kinetic(self):
+        self.w = Kinetic()
+        self.w.show()
+        self.hide()
+
+class Potential(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(0,0,800,800)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("POTENTIAL ENERGY")
+        self.image1 = QLabel(self)
+        self.image1.setGeometry(305,15,250,250)
+        
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to energy")
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Energy)
+
+        self.textboxlb = QLabel("Enter Mass:",self)
+        self.textboxlb.move(100,245)
+        self.textboxlb.setStyleSheet("font-weight: bold;")
+        self.textboxlb.setFont(QtGui.QFont('Lucida Fax',12))
+        self.mass = QLineEdit(self)
+        self.mass.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.height.setValidator(QDoubleValidator(self))
-        self.height.move(100, 275)
-        self.height.resize(150,30)
-        self.height.setText("0")
-        self.height.setToolTip("Enter height")
-        self.height.setFont(QtGui.QFont('Lucida Fax',11))
-
-        self.grav = QLineEdit(self)
-        self.grav.setStyleSheet("""QLineEdit{border: 2px solid gray;
+        self.mass.setValidator(QDoubleValidator(self))
+        self.mass.move(100, 275)
+        self.mass.resize(150,30)
+        self.mass.setText("0")
+        self.mass.setToolTip("Enter Mass")
+        self.mass.setFont(QtGui.QFont('Lucida Fax',11))
+        
+        
+        self.textboxlb2 = QLabel("Enter Distance:",self)
+        self.textboxlb2.move(100,310)
+        self.textboxlb2.resize(150,20)
+        self.textboxlb2.setStyleSheet("font-weight: bold;")
+        self.textboxlb2.setFont(QtGui.QFont('Lucida Fax',12))
+        self.dist = QLineEdit(self)
+        self.dist.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-
-        self.grav.move(100, 325)
-        self.grav.resize(150,30)
-        self.grav.setText("9.8")
-        self.grav.setToolTip("Enter Volume")
-        self.grav.setReadOnly(True)
+        self.dist.setValidator(QDoubleValidator(self))
+        self.dist.move(100, 335)
+        self.dist.resize(150,30)
+        self.dist.setText("0")
+        self.dist.setToolTip("Enter Distance")
+        self.dist.setFont(QtGui.QFont('Lucida Fax',11))
     
     
-
+        self.textboxlb3 = QLabel("Potential Energy",self)
+        self.textboxlb3.move(305,250)
+        self.textboxlb3.resize(150,20)
+        self.textboxlb3.setStyleSheet("font-weight: bold;")
+        self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',12))
         self.textbox10 = QLineEdit(self)
         self.textbox10.setReadOnly(True)
         self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
@@ -2093,9 +2226,9 @@ class Energy(QMainWindow):
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.textbox10.move(365, 275)
+        self.textbox10.move(305, 275)
         self.textbox10.resize(150,30)
-        self.textbox10.setToolTip("Density")
+        self.textbox10.setToolTip("Potential Energy")
         self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
 
         self.button = QPushButton('Submit', self)
@@ -2112,23 +2245,23 @@ class Energy(QMainWindow):
                                                 border-style: inset}""")
         self.button.resize(80,30)
         self.button.setToolTip("Submit your info")
-        self.button.move(405,325) # button.move(x,y)
+        self.button.move(335,325) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
 
     @pyqtSlot()
     def prof(self):
-        height = float(self.height.text())
-        grav = 9.8
-        self.Submit(height,grav)
+        mass = float(self.mass.text())
+        dist = float(self.dist.text())
+        self.Submit(mass,dist)
     
-    def Submit(self,height,grav):
+    def Submit(self,mass,dist):
         button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
             QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
     
-        if button == QMessageBox.Yes and height != "":
-            torri = (2*grav*height)**(.5)
-            torri2 = float("{0:.2f}".format(torri))
-            self.textbox10.setText(f"{torri2}")
+        if button == QMessageBox.Yes and mass != "" and dist != "":
+            potential = mass*9.8*dist
+            potential2 = float("{0:.2f}".format(potential))
+            self.textbox10.setText(f"{potential2}")
         
         
         elif button == QMessageBox.No:
@@ -2139,14 +2272,150 @@ class Energy(QMainWindow):
         else:
            QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
         
-    def Window5(self):
-        self.w = Window5()
+    def Energy(self):
+        self.w = Energy()
         self.w.show()
         self.hide()
+        
+class Kinetic(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowIcon(QIcon('young-lion_97429.ico'))
+        oImage = QImage("calculate.jpg")
+        sImage = oImage.scaled(QSize(800,800))   
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage)) 
+        self.setPalette(palette)
+        self.label = QLabel(self)
+        self.label.setGeometry(95,245,440,120)
+        self.label.setGraphicsEffect(QGraphicsBlurEffect())
+        self.label.setPixmap(QPixmap("calculate.jpg"))
+        self.label.setScaledContents(True)
+        self.setGeometry(400,190,600,420)
+        self.setWindowTitle("KINETIC ENERGY")
+        
+        self.buttonback = QPushButton("Back",self)
+        self.buttonback.setToolTip("Go back to energy")
+        self.buttonback.move(5,5)
+        self.buttonback.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.buttonback.resize(80,30)
+        self.buttonback.clicked.connect(self.Energy)
+
+        
+        self.textboxlb = QLabel("Enter Mass:",self)
+        self.textboxlb.move(100,245)
+        self.textboxlb.setStyleSheet("font-weight: bold;")
+        self.textboxlb.setFont(QtGui.QFont('Lucida Fax',12))
+        self.mass = QLineEdit(self)
+        self.mass.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.mass.setValidator(QDoubleValidator(self))
+        self.mass.move(100, 275)
+        self.mass.resize(150,30)
+        self.mass.setText("0")
+        self.mass.setToolTip("Enter Mass")
+        self.mass.setFont(QtGui.QFont('Lucida Fax',11))
+
+
+        self.textboxlb2 = QLabel("Enter Speed/Velocity:",self)
+        self.textboxlb2.move(100,310)
+        self.textboxlb2.resize(200,20)
+        self.textboxlb2.setStyleSheet("font-weight: bold;")
+        self.textboxlb2.setFont(QtGui.QFont('Lucida Fax',12))
+        self.vel = QLineEdit(self)
+        self.vel.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.vel.setValidator(QDoubleValidator(self))
+        self.vel.move(100, 335)
+        self.vel.resize(150,30)
+        self.vel.setText("0")
+        self.vel.setToolTip("Enter Velocity")
+        self.vel.setFont(QtGui.QFont('Lucida Fax',11))
+    
+    
+        self.textboxlb3 = QLabel("Kinetic Energy",self)
+        self.textboxlb3.move(305,250)
+        self.textboxlb3.resize(150,20)
+        self.textboxlb3.setStyleSheet("font-weight: bold;")
+        self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',12))
+        self.textbox10 = QLineEdit(self)
+        self.textbox10.setReadOnly(True)
+        self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
+                                                border-radius: 10px;
+                                                padding: 0 8px;
+                                                background: yellow;
+                                                selection-background-color: darkgray;}""")
+        self.textbox10.move(305, 275)
+        self.textbox10.resize(150,30)
+        self.textbox10.setToolTip("Kinetic Energy")
+        self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
+
+        self.button = QPushButton('Submit', self)
+        self.button.setStyleSheet("""QPushButton  {color: green;
+                                                border: 2px green;
+                                                border-radius: 5px;
+                                                padding: 8px;
+                                                border-style: outset;
+                                                background: lightblue;
+                                                selection-background-color: darkgray;
+                                                min-width: 1em;
+                                                }QPushButton:hover{background-color: rgb(209, 200, 36)}
+                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                border-style: inset}""")
+        self.button.resize(80,30)
+        self.button.setToolTip("Submit your info")
+        self.button.move(335,325) # button.move(x,y)
+        self.button.clicked.connect(self.prof) 
+
+    @pyqtSlot()
+    def prof(self):
+        mass = float(self.mass.text())
+        vel = float(self.vel.text())
+        self.Submit(mass,vel)
+    
+    def Submit(self,mass,vel):
+        button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
+            QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+    
+        if button == QMessageBox.Yes and mass != "" and vel != "":
+            kinetic = (1/2*(mass*vel))
+            kinetic2 = float("{0:.2f}".format(kinetic))
+            self.textbox10.setText(f"{kinetic2}")
+        
+        
+        elif button == QMessageBox.No:
+            pass
+        
+        elif button == QMessageBox.Yes and num == "":
+            QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
+        else:
+           QMessageBox.warning(self, "Error","Please Input an Integer", QMessageBox.Ok, QMessageBox.Ok)
+        
+    def Energy(self):
+        self.w = Energy()
+        self.w.show()
+        self.hide()
+        
 
         
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
-    ex = App()
+    ex = Window2()
     sys.exit(app.exec_())
