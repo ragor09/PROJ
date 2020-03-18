@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator, QLinearGradient
 from PyQt5.QtCore import pyqtSlot, QSize
 
-class App(QMainWindow):
+class App(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         self.title = "PHYSICS"
@@ -159,7 +159,7 @@ class StudentLog:
         self.user = user
         self.passw = passw
 
-class registerWin(QMainWindow):
+class registerWin(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
@@ -355,7 +355,7 @@ class registerWin(QMainWindow):
         self.hide()
         
         
-class Window2(QWidget):                         
+class Window2(QMainWindow):                         
     def __init__(self):
         super().__init__()
         
@@ -1322,12 +1322,12 @@ class Fdensity(QMainWindow):
         palette.setBrush(10, QBrush(sImage)) 
         self.setPalette(palette)
         self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
+        self.label.setGeometry(95,265,450,150)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
         self.setGeometry(400,190,600,420)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.setWindowTitle("DENSITY")
         self.image1 = QLabel(self)
         self.image1.setGeometry(305,15,250,250)
         image1 = QPixmap("density.png")
@@ -1336,7 +1336,7 @@ class Fdensity(QMainWindow):
                                                 padding:0px}""")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.move(405,365)
+        self.buttonback.move(5,5)
         self.buttonback.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
@@ -1359,11 +1359,16 @@ class Fdensity(QMainWindow):
                                                 border-radius: 30px;
                                                 padding: 8px;
                                                 border-style: outset;
-                                                background: lightblue;
-                                                selection-background-color: darkgray;}""")
-        self.desc1.move(50, 60)
-        self.desc1.setGeometry(80,15,250,250)
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgba(98, 211, 162, 255));
+                                                selection-background-color: green;}""")
+        self.desc1.setGeometry(85,15,250,250)
 
+
+        self.textboxlb = QLabel("Enter Mass:",self)
+        self.textboxlb.move(140,275)
+        self.textboxlb.resize(150,20)
+        self.textboxlb.setStyleSheet("font-weight: bold;")
+        self.textboxlb.setFont(QtGui.QFont('Lucida Fax',12))
         self.mass = QLineEdit(self)
         self.mass.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
@@ -1371,12 +1376,18 @@ class Fdensity(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.mass.setValidator(QDoubleValidator(self))
-        self.mass.move(100, 275)
+        self.mass.move(140, 305)
         self.mass.resize(150,30)
         self.mass.setText("0")
         self.mass.setToolTip("Enter Mass")
         self.mass.setFont(QtGui.QFont('Lucida Fax',11))
 
+
+        self.textboxlb2 = QLabel("Enter Volume:",self)
+        self.textboxlb2.move(140,340)
+        self.textboxlb2.resize(150,20)
+        self.textboxlb2.setStyleSheet("font-weight: bold;")
+        self.textboxlb2.setFont(QtGui.QFont('Lucida Fax',12))
         self.vol = QLineEdit(self)
         self.vol.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
@@ -1384,7 +1395,7 @@ class Fdensity(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.vol.setValidator(QDoubleValidator(self))
-        self.vol.move(100, 325)
+        self.vol.move(140, 365)
         self.vol.resize(150,30)
         self.vol.setText("0")
         self.vol.setToolTip("Enter Volume")
@@ -1399,11 +1410,16 @@ class Fdensity(QMainWindow):
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.textbox10.move(365, 275)
+        self.textbox10.move(325, 305)
         self.textbox10.resize(150,30)
         self.textbox10.setToolTip("Density")
         self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
 
+        self.textboxlb3 = QLabel("Density",self)
+        self.textboxlb3.move(325,275)
+        self.textboxlb3.resize(150,20)
+        self.textboxlb3.setStyleSheet("font-weight: bold;")
+        self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',12))
         self.button = QPushButton('Submit', self)
         self.button.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
@@ -1418,7 +1434,7 @@ class Fdensity(QMainWindow):
                                                 border-style: inset}""")
         self.button.resize(80,30)
         self.button.setToolTip("Submit your info")
-        self.button.move(405,325) # button.move(x,y)
+        self.button.move(355,350) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
 
     @pyqtSlot()
@@ -1462,7 +1478,7 @@ class Fpressure(QMainWindow):
         palette.setBrush(10, QBrush(sImage)) 
         self.setPalette(palette)
         self.label = QLabel(self)
-        self.label.setGeometry(0,0,800,800)
+        self.label.setGeometry(95,265,450,150)
         self.label.setGraphicsEffect(QGraphicsBlurEffect())
         self.label.setPixmap(QPixmap("calculate.jpg"))
         self.label.setScaledContents(True)
@@ -1476,7 +1492,7 @@ class Fpressure(QMainWindow):
                                                 padding:0px}""")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
-        self.buttonback.move(405,365)
+        self.buttonback.move(5,5)
         self.buttonback.setStyleSheet("""QPushButton  {color: green;
                                                 border: 2px green;
                                                 border-radius: 5px;
@@ -1490,10 +1506,9 @@ class Fpressure(QMainWindow):
                                                 border-style: inset}""")
         self.buttonback.resize(80,30)
         self.buttonback.clicked.connect(self.Window6)
-
-        
+       
         self.desc1 = QPlainTextEdit("    PRESSURE is the effect of a force acting upon a surface. It is a scalar quantity calculated as the force applied per unit area, where the force applied is always perpendicular to the surface.\nNOTE:\n101 325 Pa\n\t=1 atm\n\t=1.01325\n\t=14.70 psi\n\t= 760 mmHg",self)
-        self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
+        self.desc1.setFont(QtGui.QFont('Lucida Fax',12))
         self.desc1.setReadOnly(True)
         self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
                                                 border: 3px black;
@@ -1502,9 +1517,13 @@ class Fpressure(QMainWindow):
                                                 border-style: outset;
                                                 background: lightblue;
                                                 selection-background-color: darkgray;}""")
-        self.desc1.move(50, 60)
-        self.desc1.setGeometry(80,15,250,250)
+        self.desc1.setGeometry(85,15,250,250)
 
+        self.textboxlb = QLabel("Enter Force:",self)
+        self.textboxlb.move(140,275)
+        self.textboxlb.resize(150,20)
+        self.textboxlb.setStyleSheet("font-weight: bold;")
+        self.textboxlb.setFont(QtGui.QFont('Lucida Fax',12))
         self.force = QLineEdit(self)
         self.force.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
@@ -1512,12 +1531,17 @@ class Fpressure(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.force.setValidator(QDoubleValidator(self))
-        self.force.move(100, 275)
+        self.force.move(140, 305)
         self.force.resize(150,30)
         self.force.setText("0")
         self.force.setToolTip("Enter Force")
         self.force.setFont(QtGui.QFont('Lucida Fax',11))
 
+        self.textboxlb2 = QLabel("Enter Area:",self)
+        self.textboxlb2.move(140,340)
+        self.textboxlb2.resize(150,20)
+        self.textboxlb2.setStyleSheet("font-weight: bold;")
+        self.textboxlb2.setFont(QtGui.QFont('Lucida Fax',12))
         self.area = QLineEdit(self)
         self.area.setStyleSheet("""QLineEdit{border: 2px solid gray;
                                                 border-radius: 10px;
@@ -1525,14 +1549,18 @@ class Fpressure(QMainWindow):
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
         self.area.setValidator(QDoubleValidator(self))
-        self.area.move(100, 325)
+        self.area.move(140, 365)
         self.area.resize(150,30)
         self.area.setText("0")
         self.area.setToolTip("Enter Area")
         self.area.setFont(QtGui.QFont('Lucida Fax',11))
     
     
-
+        self.textboxlb3 = QLabel("Pressure",self)
+        self.textboxlb3.move(325,275)
+        self.textboxlb3.resize(150,20)
+        self.textboxlb3.setStyleSheet("font-weight: bold;")
+        self.textboxlb3.setFont(QtGui.QFont('Lucida Fax',12))
         self.textbox10 = QLineEdit(self)
         self.textbox10.setReadOnly(True)
         self.textbox10.setStyleSheet("""QLineEdit{border: 2px solid gray;
@@ -1540,9 +1568,9 @@ class Fpressure(QMainWindow):
                                                 padding: 0 8px;
                                                 background: yellow;
                                                 selection-background-color: darkgray;}""")
-        self.textbox10.move(365, 275)
+        self.textbox10.move(325, 305)
         self.textbox10.resize(150,30)
-        self.textbox10.setToolTip("Density")
+        self.textbox10.setToolTip("Pressure")
         self.textbox10.setFont(QtGui.QFont('Lucida Fax',11))
 
         self.button = QPushButton('Submit', self)
@@ -1559,7 +1587,7 @@ class Fpressure(QMainWindow):
                                                 border-style: inset}""")
         self.button.resize(80,30)
         self.button.setToolTip("Submit your info")
-        self.button.move(405,325) # button.move(x,y)
+        self.button.move(355,350) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
 
     @pyqtSlot()
@@ -2417,5 +2445,5 @@ class Kinetic(QMainWindow):
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
-    ex = Window2()
+    ex = App()
     sys.exit(app.exec_())
