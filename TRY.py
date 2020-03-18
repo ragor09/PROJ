@@ -3,7 +3,7 @@ import sqlite3
 import numpy as np
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator
+from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator, QLinearGradient
 from PyQt5.QtCore import pyqtSlot, QSize
 
 class App(QWidget):
@@ -96,7 +96,7 @@ class App(QWidget):
                                                 QPushButton:pressed{background-color: black;
                                                 color: rgb(203, 177, 242);
                                                 border-style: inset}""")
-        self.register.setToolTip("Click to Login!")
+        self.register.setToolTip("Click to Register")
         self.register.clicked.connect(self.registerWin)
         self.layout.addWidget(self.register,3,1)
         self.layout.addWidget(self.textboxlbl,1,1)
@@ -130,9 +130,11 @@ class App(QWidget):
      
         elif submitting == QMessageBox.No:
             pass
-        elif submitting == QMessageBox.No and username == "" and password == "":
-            pass
-        elif submitting == QMessageBox.Yes or username == "" or password == "":
+        elif submitting == QMessageBox.Yes and username == "" and password != "":
+            QMessageBox.warning(self, "Error","Please input username", QMessageBox.Ok, QMessageBox.Ok)
+        elif submitting == QMessageBox.Yes and password == "" and username != "":
+            QMessageBox.warning(self, "Error","Please input password", QMessageBox.Ok, QMessageBox.Ok)
+        else:
             QMessageBox.warning(self, "Error","Please complete the blanked field", QMessageBox.Ok, QMessageBox.Ok)
         
     def registerWin(self):
@@ -334,12 +336,17 @@ class registerWin(QWidget):
             print(emps)
 
             QMessageBox.information(self, "Evaluation", "Registration Complete", QMessageBox.Ok, QMessageBox.Ok)
-        
         elif submitting == QMessageBox.No:
             pass
-        elif submitting == QMessageBox.No and fname == "" and lastname == "" and username == "" and password == "":
-            pass
-        elif submitting == QMessageBox.No and fname == "" or lastname == "" or username == "" or password == "":
+        elif submitting == QMessageBox.Yes and fname == "" and lastname != "" and username != "" and password != "":
+            QMessageBox.warning(self, "Error","Please enter your first name", QMessageBox.Ok, QMessageBox.Ok)
+        elif submitting == QMessageBox.Yes and fname != "" and lastname == "" and username != "" and password != "":
+            QMessageBox.warning(self, "Error","Please enter your last name", QMessageBox.Ok, QMessageBox.Ok)
+        elif submitting == QMessageBox.Yes and fname != "" and lastname != "" and username == "" and password != "":
+            QMessageBox.warning(self, "Error","Please enter username", QMessageBox.Ok, QMessageBox.Ok)
+        elif submitting == QMessageBox.Yes and fname != "" and lastname != "" and username != "" and password == "":
+            QMessageBox.warning(self, "Error","Please enter password", QMessageBox.Ok, QMessageBox.Ok)
+        else:
             QMessageBox.warning(self, "Error","Please complete the blanked field", QMessageBox.Ok, QMessageBox.Ok)
 
     def Window2(self):
@@ -510,19 +517,19 @@ class Window3(QMainWindow):
         self.button1.move(260,310)
         self.button1.clicked.connect(self.Formula1)
         
-        self.textboxlbl = QLabel("READ!",self)
+        self.textboxlbl = QLabel("LAW OF INERTIA",self)
         self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 18))
-        self.textboxlbl.setStyleSheet("""QLabel  {color: white;
+        self.textboxlbl.setStyleSheet("""QLabel  {color: black;
                                                 border: 2px black;
                                                 border-radius: 5px;
                                                 padding: 2px;
                                                 border-style: outset;
-                                                background: black;
+                                                background: rgb(203, 177, 242);
                                                 selection-background-color: darkgray;}""")
         self.textboxlbl.move(250, 10)
-        self.textboxlbl.setGeometry(250,5,90,40)
+        self.textboxlbl.setGeometry(195,5,210,40)
     
-        self.desc1 = QPlainTextEdit("LAW OF INERTIA\n    An object at rest will remain at rest, and an object in \nmotion will remain in motion, at constant velocity and \nin a straight line, unless acted upon by a net force.\n\n    In the absence of external forces and when viewed \nfrom an inertial reference frame, an object at rest\nremains at rest and an object in motion continues in\nmotion with a constant velocity \n(that is, with a constant speed in a straight line).",self)
+        self.desc1 = QPlainTextEdit("\n    An object at rest will remain at rest, and an object in \nmotion will remain in motion, at constant velocity and \nin a straight line, unless acted upon by a net force.\n\n    In the absence of external forces and when viewed \nfrom an inertial reference frame, an object at rest\nremains at rest and an object in motion continues in\nmotion with a constant velocity \n(that is, with a constant speed in a straight line).",self)
         self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
         self.desc1.setReadOnly(True)
         self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
@@ -530,10 +537,10 @@ class Window3(QMainWindow):
                                                 border-radius: 30px;
                                                 padding: 8px;
                                                 border-style: outset;
-                                                background: lightblue;
-                                                selection-background-color: darkgray;}""")
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgba(98, 211, 162, 255));
+                                                selection-background-color: green;}""")
         self.desc1.move(50, 60)
-        self.desc1.setGeometry(80,50,450,230)
+        self.desc1.setGeometry(80,50,450,235)
 
     def Window2(self):
         self.w = Window2()
