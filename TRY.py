@@ -385,14 +385,16 @@ class Window2(QMainWindow):
         self.button2 = QPushButton("NEWTON'S FIRST LAW OF MOTION", self)
         self.button2.setToolTip("View the first law of motion")
         self.button2.setFont(QtGui.QFont('Lucida Fax',11))
-        self.button2.setStyleSheet("""QPushButton{border: 2px solid gray;
+        self.button2.setStyleSheet("""QPushButton  {border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
                                                 border-style: outset;
-                                                background: pink;
-                                                selection-background-color: darkgray;}       
-                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
-                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(252, 3, 215));
+                                                selection-background-color: darkgray;
+                                                min-width: 5em;
+                                                }QPushButton:hover{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
+                                                                    border: 2px rgb(203, 177, 242)}
+                                                QPushButton:pressed{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
                                                 border-style: inset}""")
         self.button2.move(150,90)
         self.button2.resize(300,30)
@@ -400,14 +402,16 @@ class Window2(QMainWindow):
         self.button3 = QPushButton("NEWTON'S SECOND LAW OF MOTION", self)
         self.button3.setToolTip("View the second law of motion")
         self.button3.setFont(QtGui.QFont('Lucida Fax',11))
-        self.button3.setStyleSheet("""QPushButton{border: 2px solid gray;
+        self.button3.setStyleSheet("""QPushButton  {border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
                                                 border-style: outset;
-                                                background: pink;
-                                                selection-background-color: darkgray;}       
-                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
-                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(252, 3, 215));
+                                                selection-background-color: darkgray;
+                                                min-width: 5em;
+                                                }QPushButton:hover{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
+                                                                    border: 2px rgb(203, 177, 242)}
+                                                QPushButton:pressed{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
                                                 border-style: inset}""")
         self.button3.move(150,150)
         self.button3.resize(300,30)
@@ -415,14 +419,16 @@ class Window2(QMainWindow):
         self.button4 = QPushButton("WORK, POWER AND ENERGY", self)
         self.button4.setToolTip("View work, power and energy")
         self.button4.setFont(QtGui.QFont('Lucida Fax',11))
-        self.button4.setStyleSheet("""QPushButton{border: 2px solid gray;
+        self.button4.setStyleSheet("""QPushButton  {border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
                                                 border-style: outset;
-                                                background: pink;
-                                                selection-background-color: darkgray;}       
-                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
-                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(252, 3, 215));
+                                                selection-background-color: darkgray;
+                                                min-width: 5em;
+                                                }QPushButton:hover{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
+                                                                    border: 2px rgb(203, 177, 242)}
+                                                QPushButton:pressed{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
                                                 border-style: inset}""")
         self.button4.move(150,210)
         self.button4.resize(300,30)
@@ -430,14 +436,16 @@ class Window2(QMainWindow):
         self.button5 = QPushButton("FLUID DYNAMICS", self)
         self.button5.setToolTip("View fluid dynamics")
         self.button5.setFont(QtGui.QFont('Lucida Fax',11))
-        self.button5.setStyleSheet("""QPushButton{border: 2px solid gray;
+        self.button5.setStyleSheet("""QPushButton  {border: 2px solid gray;
                                                 border-radius: 10px;
                                                 padding: 6px;
                                                 border-style: outset;
-                                                background: pink;
-                                                selection-background-color: darkgray;}       
-                                                QPushButton:hover{background-color: rgb(209, 200, 36)}
-                                                QPushButton:pressed{background-color: rgb(0, 224, 157);
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(252, 3, 215));
+                                                selection-background-color: darkgray;
+                                                min-width: 5em;
+                                                }QPushButton:hover{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
+                                                                    border: 2px rgb(203, 177, 242)}
+                                                QPushButton:pressed{background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgb(3, 128, 252));
                                                 border-style: inset}""")
         self.button5.move(150,270)
         self.button5.resize(300,30)
@@ -978,7 +986,7 @@ class Formula1(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -1111,7 +1119,7 @@ class Formula2(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -1343,7 +1351,7 @@ class Fdensity(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -1500,7 +1508,7 @@ class Fpressure(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -1660,7 +1668,7 @@ class Work(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -1832,7 +1840,7 @@ class Power(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -2118,7 +2126,7 @@ class Potential(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
@@ -2263,7 +2271,7 @@ class Kinetic(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: black;
+                                                }QPushButton:hover{background-color: gray;
                                                                     color: rgb(203, 207, 209);
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: darkgray;
