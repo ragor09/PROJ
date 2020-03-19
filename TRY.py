@@ -626,7 +626,7 @@ class Window4(QMainWindow):
                                                 selection-background-color: darkgray;}""")
         self.textboxlbl.setGeometry(155,5,290,40)
     
-        self.desc1 = QPlainTextEdit("LAW OF ACCELERATION\n    Newton's second law of motion answers the question of what happennds to an object that has one or more forces acting on it.\n    When viewed from an inertia; reference frame, the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.",self)
+        self.desc1 = QPlainTextEdit("\nLAW OF ACCELERATION\n    Newton's second law of motion answers the question of what happennds to an object that has one or more forces acting on it.\n    When viewed from an inertia; reference frame, the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass.",self)
         self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
         self.desc1.setReadOnly(True)
         self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
@@ -637,7 +637,7 @@ class Window4(QMainWindow):
                                                 background: lightblue;
                                                 selection-background-color: darkgray;}""")
         self.desc1.move(50, 60)
-        self.desc1.setGeometry(80,50,450,230)
+        self.desc1.setGeometry(80,50,450,210)
 
     def Window2(self):
         self.w = Window2()
@@ -860,8 +860,17 @@ class Window6(QMainWindow):
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
   
-
-        self.desc1 = QPlainTextEdit("    FLUID is a collection of molecules that are randomly arranged and held together by weak cohesive forces exerted by the walls of the container.\n\n    It is also a matter that flows under pressure, which includes liquids, gases, and even plasmas. Water, air, sun and even molasses are fluid.\n\n    FLUID DYNAMICS is the study of fluids in motion.",self)
+        self.textboxlbl = QLabel("FLUIDS",self)
+        self.textboxlbl.setFont(QtGui.QFont('Times New Roman', 18))
+        self.textboxlbl.setStyleSheet("""QLabel  {color: black;
+                                                border: 2px black;
+                                                border-radius: 5px;
+                                                padding: 2px;
+                                                border-style: outset;
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgb(92, 2, 125), stop:1 rgb(203, 177, 242));
+                                                selection-background-color: darkgray;}""")
+        self.textboxlbl.setGeometry(250,10,95,35)
+        self.desc1 = QPlainTextEdit("\n     FLUID is a collection of molecules that are randomly arranged and held together by weak cohesive forces exerted by the walls of the container.\n    It is also a matter that flows under pressure, which includes liquids, gases, and even plasmas. Water, air, sun and even molasses are fluid.\n\n    FLUID DYNAMICS is the study of fluids in motion.",self)
         self.desc1.setFont(QtGui.QFont('Lucida Fax',11))
         self.desc1.setReadOnly(True)
         self.desc1.setStyleSheet("""QPlainTextEdit{color: black;
@@ -872,7 +881,7 @@ class Window6(QMainWindow):
                                                 background: lightblue;
                                                 selection-background-color: darkgray;}""")
         self.desc1.move(50, 5)
-        self.desc1.setGeometry(80,5,450,200)
+        self.desc1.setGeometry(80,55,450,200)
         
         self.button3 = QPushButton("D  E  N  S  I  T  Y", self)
         self.button3.setToolTip("View the second law of motion")
@@ -886,7 +895,7 @@ class Window6(QMainWindow):
                                                 QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button3.move(150,240)
+        self.button3.move(150,270)
         self.button3.resize(300,30)
         
         
@@ -902,7 +911,7 @@ class Window6(QMainWindow):
                                                 QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button4.move(150,270)
+        self.button4.move(150,300)
         self.button4.resize(300,30)
     
         self.button3.clicked.connect(self.Fdensity)
@@ -963,7 +972,8 @@ class Formula1(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(50,30)
+        self.buttonback.resize(53,35)
+        self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
         self.buttonback.clicked.connect(self.Window3)
         self.textboxlb3 = QLabel("Enter Mass:",self)
         self.textboxlb3.move(130,270)
@@ -1009,8 +1019,9 @@ class Formula1(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,30)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
+        self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(280,345) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
         self.textbox6.returnPressed.connect(self.button.click)
@@ -1077,7 +1088,7 @@ class Formula2(QMainWindow):
                                                 padding:0px}""")
 
         self.setGeometry(400,190,600,440)
-        self.setWindowTitle("NEWTON'S FIRST LAW")
+        self.setWindowTitle("NEWTON'S SECOND LAW")
         self.buttonback = QPushButton("Back",self)
         self.buttonback.setToolTip("Go back to topics")
         self.buttonback.move(3,5)
@@ -1092,7 +1103,8 @@ class Formula2(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(50,30)
+        self.buttonback.resize(53,35)
+        self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
         self.buttonback.clicked.connect(self.Window4)
         self.textboxlb3 = QLabel("Enter Mass:",self)
         self.textboxlb3.move(55,250)
@@ -1229,8 +1241,9 @@ class Formula2(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,30)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
+        self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(445,325) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
         self.ax.returnPressed.connect(self.button.click)
@@ -1320,7 +1333,8 @@ class Fdensity(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(80,30)
+        self.buttonback.resize(53,35)
+        self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
         self.buttonback.clicked.connect(self.Window6)
 
         self.desc1 = QPlainTextEdit("    DENSITY is a scalar quantity defined as the ratio of an object's mass to the volume it occupies, and is frequently given the symbol rho in physics.\n    It is also known as mass density.\n    NOTE: less dense fluids will float on top of more dense fluids, and less dense solids will float on top of more dense fluids(keeping in mind that the average density of the entire solid object must be considered.",self)
@@ -1402,8 +1416,9 @@ class Fdensity(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,30)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
+        self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(355,350) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
         self.vol.returnPressed.connect(self.button.click)
@@ -1417,16 +1432,14 @@ class Fdensity(QMainWindow):
     def Submit(self,mass,vol):
         button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
             QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
-    
-        if button == QMessageBox.Yes and mass != "" and vol != "":
+
+        if button == QMessageBox.Yes and mass == 0 or vol == 0:
+            density2 = 0
+            self.textbox10.setText(f"{density2}")
+        elif button == QMessageBox.Yes and mass != "" and vol != "":
             density = mass/vol
             density2 = float("{0:.2f}".format(density))
             self.textbox10.setText(f"{density2}")
-        
-        
-        elif button == QMessageBox.No:
-            pass
-        
         elif button == QMessageBox.Yes and num == "":
             QMessageBox.warning(self, "Error","Please Input Mass", QMessageBox.Ok, QMessageBox.Ok)
         else:
@@ -1475,7 +1488,8 @@ class Fpressure(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(80,30)
+        self.buttonback.resize(53,35)
+        self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
         self.buttonback.clicked.connect(self.Window6)
        
         self.desc1 = QPlainTextEdit("    PRESSURE is the effect of a force acting upon a surface. It is a scalar quantity calculated as the force applied per unit area, where the force applied is always perpendicular to the surface.\nNOTE:\n101 325 Pa\n\t=1 atm\n\t=1.01325\n\t=14.70 psi\n\t= 760 mmHg",self)
@@ -1556,8 +1570,9 @@ class Fpressure(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,30)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
+        self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(355,350) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
         self.area.returnPressed.connect(self.button.click)
@@ -1571,13 +1586,14 @@ class Fpressure(QMainWindow):
     def Submit(self,force,area):
         button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
             QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
-    
-        if button == QMessageBox.Yes and force != "" and area != "":
+
+        if button == QMessageBox.Yes and force == 0 or area == 0:
+            pressure2 = 0
+            self.textbox10.setText(f"{pressure2}")
+        elif button == QMessageBox.Yes and force != "" and area != "":
             pressure = force/area
             pressure2 = float("{0:.2f}".format(pressure))
             self.textbox10.setText(f"{pressure2}")
-        
-        
         elif button == QMessageBox.No:
             pass
         
@@ -1630,7 +1646,7 @@ class Work(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(80,30)
+        self.buttonback.resize(53,35)
         self.buttonback.clicked.connect(self.Window5)
 
         self.force = QLabel("Force:",self)
@@ -1715,11 +1731,13 @@ class Work(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.buttonback.resize(53,35)
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
         self.button.setFont(QtGui.QFont('Lucida Fax',11))
-        self.button.setToolTip("Submit your info")
         self.button.move(435,315) # button.move(x,y)
-        self.button.clicked.connect(self.prof) 
+        self.button.clicked.connect(self.prof)
+        self.dis1.returnPressed.connect(self.button.click) 
+        self.ang1.returnPressed.connect(self.button.click)
 
     @pyqtSlot()
     def prof(self):
@@ -1865,11 +1883,12 @@ class Power(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,40)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
         self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(305,325) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
+        self.dis1.returnPressed.connect(self.button.click)
 
     @pyqtSlot()
     def prof(self):
@@ -1881,12 +1900,12 @@ class Power(QMainWindow):
         button = QMessageBox.question(self,"Submit Data", "Are you sure?", 
             QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
     
-        if button == QMessageBox.Yes and work != "" and time != "":
+        if button == QMessageBox.Yes and work == 0 or time == 0:
+            power2 = 0
+            self.textbox10.setText(f"{power2}")
+        elif button == QMessageBox.Yes and work != "" and time != "":
             power1 = work/time
             power2 = float("{0:.2f}".format(power1))
-            self.textbox10.setText(f"{power2}")
-        elif button == QMessageBox.Yes and work == 0 and time != "":
-            power = 0
             self.textbox10.setText(f"{power2}")
         elif button == QMessageBox.No:
             pass
@@ -2147,11 +2166,12 @@ class Potential(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,40)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
         self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(340,335) # button.move(x,y)
         self.button.clicked.connect(self.prof) 
+        self.dist.returnPressed.connect(self.button.click)
 
     @pyqtSlot()
     def prof(self):
@@ -2289,11 +2309,12 @@ class Kinetic(QMainWindow):
                                                 }QPushButton:hover{background-color: rgb(209, 200, 36)}
                                                 QPushButton:pressed{background-color: rgb(0, 224, 157);
                                                 border-style: inset}""")
-        self.button.resize(80,40)
-        self.button.setToolTip("Submit your info")
+        self.button.resize(80,35)
+        self.button.setToolTip("Calculate!")
         self.button.setFont(QtGui.QFont('Lucida Fax',11))
         self.button.move(335,335) # button.move(x,y)
-        self.button.clicked.connect(self.prof) 
+        self.button.clicked.connect(self.prof)
+        self.vel.returnPressed.connect(self.button.click) 
 
     @pyqtSlot()
     def prof(self):
