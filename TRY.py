@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator, QLinearGradient
 from PyQt5.QtCore import pyqtSlot, QSize
 
-class App(QMainWindow):
+class App(QWidget):
     def __init__(self):
         QWidget.__init__(self)
         self.title = "PHYSICS"
@@ -160,7 +160,7 @@ class StudentLog:
         self.user = user
         self.passw = passw
 
-class registerWin(QMainWindow):
+class registerWin(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
@@ -357,7 +357,7 @@ class registerWin(QMainWindow):
         self.hide()
         
         
-class Window2(QWidget):                         
+class Window2(QMainWindow):                         
     def __init__(self):
         super().__init__()
         
@@ -2384,5 +2384,5 @@ class Kinetic(QMainWindow):
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
-    ex = Window2()
+    ex = App()
     sys.exit(app.exec_())
