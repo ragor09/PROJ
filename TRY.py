@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QIcon, QImage, QPalette, QBrush, QPixmap, QFont, QIntValidator, QDoubleValidator, QLinearGradient
 from PyQt5.QtCore import pyqtSlot, QSize
 
-class App(QWidget):
+class App(QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         self.title = "PHYSICS"
@@ -160,7 +160,7 @@ class StudentLog:
         self.user = user
         self.passw = passw
 
-class registerWin(QWidget):
+class registerWin(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon('young-lion_97429.ico'))
@@ -357,7 +357,7 @@ class registerWin(QWidget):
         self.hide()
         
         
-class Window2(QMainWindow):                         
+class Window2(QWidget):                         
     def __init__(self):
         super().__init__()
         
@@ -986,11 +986,11 @@ class Formula1(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1119,11 +1119,11 @@ class Formula2(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1351,11 +1351,11 @@ class Fdensity(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1508,11 +1508,11 @@ class Fpressure(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
@@ -1668,11 +1668,11 @@ class Work(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.clicked.connect(self.Window5)
@@ -1840,11 +1840,11 @@ class Power(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.clicked.connect(self.Window5)
@@ -2017,7 +2017,7 @@ class Energy(QMainWindow):
                                                 border-radius: 30px;
                                                 padding: 8px;
                                                 border-style: outset;
-                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgba(98, 211, 162, 255));
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgb(121, 4, 163), stop:1 rgba(25, 174, 208));
                                                 selection-background-color: green;}""")
         self.desc1.move(50, 60)
         self.desc1.setGeometry(30,100,250,250)
@@ -2031,7 +2031,7 @@ class Energy(QMainWindow):
                                                 border-radius: 30px;
                                                 padding: 8px;
                                                 border-style: outset;
-                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 darkGray, stop:1 rgba(98, 211, 162, 255));
+                                                background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgb(121, 4, 163), stop:1 rgba(25, 174, 208));
                                                 selection-background-color: green;}""")
         self.desc2.move(50, 60)
         self.desc2.setGeometry(310,100,250,250)
@@ -2126,11 +2126,11 @@ class Potential(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.clicked.connect(self.Energy)
@@ -2271,11 +2271,11 @@ class Kinetic(QMainWindow):
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
                                                 min-width: 5em;
-                                                }QPushButton:hover{background-color: gray;
-                                                                    color: rgb(203, 207, 209);
+                                                }QPushButton:hover{background-color: darkgray;
+                                                                    color: black;
                                                                     border: 2px rgb(44, 87, 115)}
-                                                QPushButton:pressed{background-color: darkgray;
-                                                color: rgb(203, 177, 242);
+                                                QPushButton:pressed{background-color: rgb(203, 207, 209);
+                                                color: black;
                                                 border-style: inset}""")
         self.buttonback.resize(53,35)
         self.buttonback.clicked.connect(self.Energy)
@@ -2384,5 +2384,5 @@ class Kinetic(QMainWindow):
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)
-    ex = App()
+    ex = Window2()
     sys.exit(app.exec_())
