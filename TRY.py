@@ -1118,14 +1118,14 @@ class Formula2(QMainWindow):
                                                 border-style: outset;
                                                 background: rgb(203, 207, 209);
                                                 selection-background-color: darkgray;
-                                                min-width: 5em;
+                                                min-width: 1em;
                                                 }QPushButton:hover{background-color: darkgray;
                                                                     color: black;
                                                                     border: 2px rgb(44, 87, 115)}
                                                 QPushButton:pressed{background-color: rgb(203, 207, 209);
                                                 color: black;
                                                 border-style: inset}""")
-        self.buttonback.resize(53,35)
+        self.buttonback.resize(50,35)
         self.buttonback.setFont(QtGui.QFont('Lucida Fax',11))
         self.buttonback.clicked.connect(self.Window4)
         self.textboxlb3 = QLabel("Enter Mass:",self)
