@@ -2363,7 +2363,7 @@ class Kinetic(QMainWindow):
             QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
     
         if button == QMessageBox.Yes and mass != "" and vel != "":
-            kinetic = (1/2*(mass*vel))
+            kinetic = (1/2*(mass*(vel**2)))
             kinetic2 = float("{0:.2f}".format(kinetic))
             self.textbox10.setText(f"{kinetic2}")
         
